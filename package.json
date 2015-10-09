@@ -1,6 +1,6 @@
 {
   "name": "generator-whim",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A constantly-changing static-site boilerplate based on my evanescent preferences.",
   "license": "MIT",
   "main": "app/index.js",
