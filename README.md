@@ -25,12 +25,6 @@ yo whim
 - [Babel](https://babeljs.io)
 - [Surge](https://surge.sh)
 
-## Contribute
-
-[![Tasks][waffle-img]][waffle-url]
-
-Standards for this project, including tests, code coverage, and semantics are enforced with a build tool. Pull requests must include passing tests with 100% code coverage and no linting errors.
-
 ## Test
 
     $ npm test
@@ -48,5 +42,3 @@ Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 [npm-url]:       https://npmjs.org/package/generator-whim
 [travis-img]:    http://img.shields.io/travis/shannonmoeller/generator-whim.svg?style=flat-square
 [travis-url]:    https://travis-ci.org/shannonmoeller/generator-whim
-[waffle-img]:    http://img.shields.io/github/issues/shannonmoeller/generator-whim.svg?style=flat-square
-[waffle-url]:    http://waffle.io/shannonmoeller/generator-whim
