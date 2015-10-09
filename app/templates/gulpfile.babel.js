@@ -6,6 +6,10 @@ gulp.task('default', function (done) {
 	runSequence('clean', 'lint', 'build', done);
 });
 
+gulp.task('deploy', function (done) {
+	runSequence('default', 'dest:deploy', done);
+});
+
 gulp.task('serve', function (done) {
 	runSequence('default', 'dest:serve', done);
 });

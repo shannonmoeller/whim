@@ -1,8 +1,9 @@
 import cli from './util/cli';
 import env from './util/env';
 import plug from './util/plug';
-import gulp from 'gulp';
 import del from 'del';
+import ftp from 'vinyl-ftp';
+import gulp from 'gulp';
 
 let isServing = false,
 	isWatching = false,
@@ -14,6 +15,15 @@ let isServing = false,
 
 gulp.task('dest:clean', function () {
 	del.sync(paths.dest);
+});
+
+gulp.task('dest:deploy', function () {
+	let remote = ftp.create(env.FTP);
+
+	return gulp
+		.src(paths.deploy, { base: paths.dest })
+		.pipe(remote.newer(env.FTP.dir))
+		.pipe(remote.dest(env.FTP.dir));
 });
 
 gulp.task('dest:serve', function () {

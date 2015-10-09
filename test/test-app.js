@@ -7,7 +7,7 @@ var path = require('path'),
 describe('whim:app', function () {
 	before(function (done) {
 		helpers
-			.run(path.join(__dirname, '../generators/app'))
+			.run(path.join(__dirname, '../app'))
 			.withOptions({ skipInstall: true })
 			.on('end', done);
 	});

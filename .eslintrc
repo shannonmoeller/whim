@@ -3,13 +3,13 @@
 
   "env": {
     "amd": false,
-    "browser": true,
-    "es6": true,
+    "browser": false,
+    "es6": false,
     "jasmine": false,
     "jquery": false,
     "meteor": false,
     "mocha": false,
-    "node": false,
+    "node": true,
     "prototypejs": false,
     "shelljs": false
   },
