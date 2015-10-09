@@ -16,7 +16,7 @@ describe('whim:app', function () {
 		assert.file([
 			'package.json',
 			'.editorconfig',
-			'.jshintrc'
+			'.eslintrc'
 		]);
 	});
 });
