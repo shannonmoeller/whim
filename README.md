@@ -1,47 +1,52 @@
-# generator-whim [![Build Status](https://secure.travis-ci.org/shannonmoeller/generator-whim.png?branch=master)](https://travis-ci.org/shannonmoeller/generator-whim)
+# `generator-whim`
 
-> [Yeoman](http://yeoman.io) generator
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Tip][amazon-img]][amazon-url]
 
+A constantly-changing static-site boilerplate based on my evanescent preferences.
 
-## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+## Install
 
 ```bash
 npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-whim from npm, run:
-
-```bash
 npm install -g generator-whim
 ```
 
-Finally, initiate the generator:
+## Generate
 
 ```bash
 yo whim
 ```
 
-### Getting To Know Yeoman
+## Flavors of the month
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+- [Gulp](http://gulpjs.com)
+- [Handlebars](http://handlebarsjs.com)
+- [PostCSS](https://github.com/postcss/postcss)
+- [Babel](https://babeljs.io)
+- [Surge](https://surge.sh)
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+## Contribute
 
+[![Tasks][waffle-img]][waffle-url]
 
-## License
+Standards for this project, including tests, code coverage, and semantics are enforced with a build tool. Pull requests must include passing tests with 100% code coverage and no linting errors.
 
-MIT
+## Test
+
+    $ npm test
+
+----
+
+© 2015 Shannon Moeller <me@shannonmoeller.com>
+
+Licensed under [MIT](http://shannonmoeller.com/mit.txt)
+
+[amazon-img]:    https://img.shields.io/badge/amazon-tip_jar-yellow.svg?style=flat-square
+[amazon-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
+[downloads-img]: http://img.shields.io/npm/dm/generator-whim.svg?style=flat-square
+[npm-img]:       http://img.shields.io/npm/v/generator-whim.svg?style=flat-square
+[npm-url]:       https://npmjs.org/package/generator-whim
+[travis-img]:    http://img.shields.io/travis/shannonmoeller/generator-whim.svg?style=flat-square
+[travis-url]:    https://travis-ci.org/shannonmoeller/generator-whim
+[waffle-img]:    http://img.shields.io/github/issues/shannonmoeller/generator-whim.svg?style=flat-square
+[waffle-url]:    http://waffle.io/shannonmoeller/generator-whim
