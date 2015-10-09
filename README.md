@@ -2,7 +2,7 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Tip][amazon-img]][amazon-url]
 
-A constantly-changing static-site boilerplate based on my evanescent preferences.
+A constantly-changing static-site boilerplate generator based on my evanescent preferences.
 
 ## Install
 
