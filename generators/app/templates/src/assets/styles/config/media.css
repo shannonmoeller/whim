@@ -1,0 +1,36 @@
+/**
+ * Breakpoints have been setup to allow greater specificity at certain viewport
+ * sizes. Styles specified for a specific breakpoint will not bleed into others.
+ *
+ *     |------------(all)-----------|
+ *     |--(SM)--|
+ *               |--(MD)--|
+ *                         |--(LG)--|
+ *
+ *     .foo {
+ *         background-color: red;
+ *     }
+ *
+ *     @media (--BP_SMALL) {
+ *         .bpSm-foo {
+ *             background-color: yellow;
+ *         }
+ *     }
+ *
+ *     @media (--BP_MEDIUM) {
+ *         .bpMd-foo {
+ *             background-color: green;
+ *         }
+ *     }
+ *
+ *     @media (--BP_LARGE) {
+ *         .bpLg-foo {
+ *             background-color: blue;
+ *         }
+ *     }
+ *
+ */
+
+@custom-media --BP_SMALL (max-width: 640px);
+@custom-media --BP_MEDIUM (min-width: 641px) and (max-width: 960px);
+@custom-media --BP_LARGE (min-width: 961px);

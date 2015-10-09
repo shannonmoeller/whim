@@ -1,0 +1,34 @@
+@define-mixin --SPREAD {
+	& {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	& > * + * {
+		margin-left: var(--GUTTER_SMALL);
+	}
+}
+
+@define-mixin --M_SPREAD {
+	&_b { align-items: flex-end; }
+	&_m { align-items: center; }
+}
+
+.spread { @mixin --SPREAD; }
+.m-spread { @mixin --M_SPREAD; }
+
+@media (--BP_SMALL) {
+	.bpSm-spread { @mixin --SPREAD; }
+	.bpSm-m-spread { @mixin --M_SPREAD; }
+}
+
+@media (--BP_MEDIUM) {
+	.bpMd-spread { @mixin --SPREAD; }
+	.bpMd-m-spread { @mixin --M_SPREAD; }
+}
+
+@media (--BP_LARGE) {
+	.bpLg-spread { @mixin --SPREAD; }
+	.bpLg-m-spread { @mixin --M_SPREAD; }
+}

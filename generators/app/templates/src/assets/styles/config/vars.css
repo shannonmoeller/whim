@@ -1,0 +1,38 @@
+:root {
+	--COLOR_WHITE: hsl(0, 0%, 100%);
+	--COLOR_WHITE_DARK: hsl(0, 0%, 93%);
+	--COLOR_GRAY: hsl(0, 0%, 66%);
+	--COLOR_GRAY_DARK: hsl(0, 0%, 33%);
+	--COLOR_BLACK: hsl(0, 0%, 6%);
+	--COLOR_BLACK_DARK: hsl(0, 0%, 0%);
+
+	--COLOR_PRIMARY: hsl(0, 100%, 50%);
+	--COLOR_PRIMARY_DARK: hsl(0, 100%, 40%);
+	--COLOR_ACCENT: hsl(0, 100%, 50%);
+	--COLOR_ACCENT_DARK: hsl(0, 100%, 40%);
+	--COLOR_HIGHLIGHT: hsl(0, 100%, 50%);
+	--COLOR_HIGHLIGHT_DARK: hsl(0, 100%, 40%);
+
+	--COLOR_BACKGROUND: var(--COLOR_WHITE);
+	--COLOR_FOREGROUND: var(--COLOR_BLACK);
+
+	--FONT_FAMILY_PRIMARY: 'Roboto Slab', Arial, sans-serif;
+	--FONT_FAMILY_ACCENT: 'Roboto Slab', Arial, sans-serif;
+	--FONT_FAMILY_DISPLAY: 'Roboto Slab', Arial, sans-serif;
+
+	--FONT_SIZE_XSMALL: 12px;
+	--FONT_SIZE_SMALL: 16px;
+	--FONT_SIZE_MEDIUM: 24px;
+	--FONT_SIZE_LARGE: 36px;
+	--FONT_SIZE_XLARGE: 48px;
+
+	--LINE_HEIGHT_PRIMARY: 1.6;
+	--LINE_HEIGHT_ACCENT: 1.3;
+	--LINE_HEIGHT_DISPLAY: 1;
+
+	--ASPECT_TEXT_MODIFIER: 1.8;
+
+	--GUTTER_SMALL: var(--FONT_SIZE_XSMALL);
+	--GUTTER_MEDIUM: var(--FONT_SIZE_MEDIUM);
+	--GUTTER_LARGE: var(--FONT_SIZE_XLARGE);
+}

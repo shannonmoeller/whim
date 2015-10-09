@@ -1,0 +1,19 @@
+.site {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	height: 1px;
+	min-height: 100vh; /* IE hack */
+}
+
+.site-hd {
+	flex: 0 0 auto;
+}
+
+.site-bd {
+	flex: 1 0 auto;
+}
+
+.site-ft {
+	flex: 0 0 auto;
+}

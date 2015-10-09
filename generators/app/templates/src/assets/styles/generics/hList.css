@@ -1,0 +1,7 @@
+.hList {
+	overflow: hidden;
+}
+
+.hList > * {
+	float: left;
+}

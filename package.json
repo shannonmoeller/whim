@@ -1,0 +1,28 @@
+{
+  "name": "generator-whim",
+  "version": "0.1.0",
+  "description": "A constantly-changing static-site boilerplate based on my evanescent preferences.",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "shannonmoeller/generator-whim",
+  "author": {
+    "name": "Shannon Moeller",
+    "email": "me@shannonmoeller.com",
+    "url": "https://github.com/shannonmoeller"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}

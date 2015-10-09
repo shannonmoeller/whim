@@ -1,0 +1,7 @@
+/* SITE */
+Email: me@shannonmoeller.com
+Twitter: http://twitter.com/shannonmoeller
+Location: Hamburg, NY, USA
+
+/* COLOPHON */
+Font: Roboto Slab (https://www.google.com/fonts/specimen/Roboto+Slab)
