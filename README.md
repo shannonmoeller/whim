@@ -19,11 +19,19 @@ yo whim
 
 ## Flavors of the month
 
-- [Gulp](http://gulpjs.com)
-- [Handlebars](http://handlebarsjs.com)
-- [PostCSS](https://github.com/postcss/postcss)
-- [Babel](https://babeljs.io)
-- [Surge](https://surge.sh)
+- Server-side
+  - [Gulp](http://gulpjs.com)
+  - [Handlebars](http://handlebarsjs.com)
+  - [PostCSS](https://github.com/postcss/postcss)
+  - [Babel](https://babeljs.io)
+  - [svgstore](https://github.com/w0rm/gulp-svgstore)
+  - [Surge](https://surge.sh)
+- Client-side
+  - [Future JS](http://babeljs.io/docs/learn-es2015/)
+  - [Future CSS](http://cssnext.io/features/)
+  - [document.registerElement](https://github.com/WebReflection/document-register-element)
+  - [window.fetch](https://github.com/github/fetch)
+  - [SVG External Content](https://github.com/jonathantneal/svg4everybody)
 
 ## Test
 
