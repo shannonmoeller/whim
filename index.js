@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 'use strict';
 
-var vinylFs = require('vinyl-fs'),
+var inquirer = require('inquirer'),
+	path = require('path'),
 	template = require('gulp-template'),
-	inquirer = require('inquirer'),
+	vinylFs = require('vinyl-fs'),
 
-	files = './templates/**/{.*,*.*}',
+	base = path.join(__dirname, 'templates'),
+	src = path.join(base, '/**/{*,.*}'),
+	dest = process.cwd(),
+
 	prompts = [
 		{
 			name: 'ssl',
@@ -32,9 +36,9 @@ var vinylFs = require('vinyl-fs'),
 
 function generate(answers) {
 	vinylFs
-		.src(files, { cwd: __dirname, base: __dirname })
+		.src(src, { base: base })
 		.pipe(template(answers))
-		.pipe(vinylFs.dest(process.cwd()));
+		.pipe(vinylFs.dest(dest));
 }
 
 inquirer.prompt(prompts, generate);
