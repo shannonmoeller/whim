@@ -1,0 +1,64 @@
+@define-mixin --BLOCKS {
+	& {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -var(--GUTTER_MEDIUM);
+	}
+
+	& > * {
+		flex: 1 0 100%;
+		padding: var(--GUTTER_MEDIUM);
+	}
+
+	&_1up > * {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+
+	&_2up > * {
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+
+	&_3up > * {
+		flex-basis: 33.333%;
+		max-width: 33.333%;
+	}
+
+	&_4up > * {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+}
+
+@define-mixin --M_BLOCKS {
+	&_flush { margin: 0; }
+	&_flush > * { padding: 0; }
+
+	&_sm { margin: -var(--GUTTER_SMALL); }
+	&_sm > * { padding: var(--GUTTER_SMALL); }
+
+	&_md { margin: -var(--GUTTER_MEDIUM); }
+	&_md > * { padding: var(--GUTTER_MEDIUM); }
+
+	&_lg { margin: -var(--GUTTER_LARGE); }
+	&_lg > * { padding: var(--GUTTER_LARGE); }
+}
+
+.blocks { @mixin --BLOCKS; }
+.m-blocks { @mixin --M_BLOCKS; }
+
+@media (--BP_SMALL) {
+	.bpSm-blocks { @mixin --BLOCKS; }
+	.bpSm-m-blocks { @mixin --M_BLOCKS; }
+}
+
+@media (--BP_MEDIUM) {
+	.bpMd-blocks { @mixin --BLOCKS; }
+	.bpMd-m-blocks { @mixin --M_BLOCKS; }
+}
+
+@media (--BP_LARGE) {
+	.bpLg-blocks { @mixin --BLOCKS; }
+	.bpLg-m-blocks { @mixin --M_BLOCKS; }
+}
