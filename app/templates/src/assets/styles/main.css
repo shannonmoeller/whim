@@ -12,6 +12,7 @@
 
 /* Generics */
 @import './generics/aspect.css';
+@import './generics/blocks.css';
 @import './generics/box.css';
 @import './generics/btn.css';
 @import './generics/grid.css';

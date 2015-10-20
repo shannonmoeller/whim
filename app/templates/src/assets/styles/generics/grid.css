@@ -53,14 +53,8 @@
 }
 
 @define-mixin --M_GRID {
-    &_b { align-items: flex-end; }
-    &_m { align-items: center; }
-    &_c { justify-content: center; }
-    &_r { justify-content: flex-end; }
-
-    &-col_b { align-self: flex-end; }
-    &-col_m { align-self: center; }
-    &-col_t { align-self: flex-start; }
+	&_btm { align-items: flex-end; }
+	&_mid { align-items: center; }
 
     &_flush {
         margin-left: 0;

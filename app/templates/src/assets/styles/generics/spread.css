@@ -11,8 +11,8 @@
 }
 
 @define-mixin --M_SPREAD {
-	&_b { align-items: flex-end; }
-	&_m { align-items: center; }
+	&_btm { align-items: flex-end; }
+	&_mid { align-items: center; }
 }
 
 .spread { @mixin --SPREAD; }
