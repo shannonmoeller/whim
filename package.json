@@ -10,21 +10,9 @@
     "email": "me@shannonmoeller.com",
     "url": "https://github.com/shannonmoeller"
   },
-  "scripts": {
-    "test": "mocha"
-  },
-  "files": [
-    "generators"
-  ],
-  "keywords": [
-    "yeoman-generator"
-  ],
   "dependencies": {
     "gulp-template": "^3.0.0",
     "inquirer": "^0.10.1",
     "vinyl-fs": "^0.3.14"
-  },
-  "devDependencies": {
-    "mocha": "*"
   }
 }
