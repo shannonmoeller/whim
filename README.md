@@ -4,17 +4,11 @@
 
 A constantly-changing static-site boilerplate generator based on my evanescent preferences.
 
-## Install
+## Usage
 
 ```bash
-npm install -g yo
-npm install -g generator-whim
-```
-
-## Generate
-
-```bash
-yo whim
+npm install -g whim
+whim
 ```
 
 ## Flavors of the month
