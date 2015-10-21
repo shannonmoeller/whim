@@ -1,6 +1,6 @@
 {
   "name": "whim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A constantly-changing static-site boilerplate generator based on my evanescent preferences.",
   "license": "MIT",
   "bin": "index.js",
