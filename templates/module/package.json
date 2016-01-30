@@ -1,0 +1,44 @@
+{
+  "name": "<%= slug %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": "https://github.com/shannonmoeller/<%= slug %>",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.9.1",
+    "babel-cli": "^6.4.0",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-2": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "coveralls": "^2.11.6",
+    "nyc": "^5.3.0",
+    "watch": "^0.17.1",
+    "xo": "^0.12.1"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "coverage": "nyc report -r text-lcov | coveralls",
+    "test": "xo && nyc ava --verbose",
+    "watch": "watch 'npm test' src test -du"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
+  "nyc": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ]
+  },
+  "xo": {
+    "esnext": true
+  }
+}

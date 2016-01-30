@@ -1,44 +1,78 @@
 #!/usr/bin/env node
 'use strict';
 
-var inquirer = require('inquirer'),
-	path = require('path'),
-	template = require('gulp-template'),
-	vinylFs = require('vinyl-fs'),
+var inquirer = require('inquirer');
+var path = require('path');
+var template = require('gulp-template');
+var vinylFs = require('vinyl-fs');
+var ygor = require('ygor');
 
-	base = path.join(__dirname, 'templates'),
-	src = path.join(base, '/**/{*,.*}'),
-	dest = process.cwd(),
+function generate(base, src, dest, answers) {
+	vinylFs
+		.src(src, {base: base})
+		.pipe(template(answers))
+		.pipe(vinylFs.dest(dest));
+}
 
-	prompts = [
-		{
-			name: 'ssl',
-			type: 'confirm',
-			message: 'Will you be using SSL?',
-			default: true
-		},
-		{
-			name: 'domain',
-			message: 'What is the site\'s domain?',
-			default: 'example.com'
-		},
+function module() {
+	var base = path.join(__dirname, 'templates/module');
+	var src = path.join(base, '/**/{*,.*}');
+	var dest = process.cwd();
+	var prompts = [
 		{
 			name: 'slug',
-			message: 'What should I name the package?',
+			message: 'slug',
 			default: function (answers) {
 				return answers.domain
 					.split('.')
 					.reverse()
 					.join('-');
 			}
+		},
+		{
+			name: 'description',
+			message: 'description'
 		}
 	];
 
-function generate(answers) {
-	vinylFs
-		.src(src, { base: base })
-		.pipe(template(answers))
-		.pipe(vinylFs.dest(dest));
+	inquirer.prompt(prompts, generate.bind(null, base, src, dest));
 }
 
-inquirer.prompt(prompts, generate);
+function website() {
+	var base = path.join(__dirname, 'templates/website');
+	var src = path.join(base, '/**/{*,.*}');
+	var dest = process.cwd();
+	var prompts = [
+		{
+			name: 'ssl',
+			message: 'ssl',
+			type: 'confirm',
+			default: true
+		},
+		{
+			name: 'domain',
+			message: 'domain',
+			default: 'example.com'
+		},
+		{
+			name: 'slug',
+			message: 'slug',
+			default: function (answers) {
+				return answers.domain
+					.split('.')
+					.reverse()
+					.join('-');
+			}
+		},
+		{
+			name: 'description',
+			message: 'description'
+		}
+	];
+
+	inquirer.prompt(prompts, generate.bind(null, base, src, dest));
+}
+
+ygor
+	.task('module', module)
+	.task('website', website);
