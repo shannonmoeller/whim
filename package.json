@@ -2,22 +2,36 @@
   "name": "whim",
   "version": "1.0.1",
   "description": "A constantly-changing static-site boilerplate generator based on my evanescent preferences.",
-  "license": "MIT",
   "bin": "index.js",
+  "main": false,
+  "scripts": {
+    "test": "xo index.js",
+    "watch": "chokidar '{*.js,templates/**/{*,.*}' -c 'npm test'"
+  },
   "repository": "shannonmoeller/whim",
+  "keywords": [
+    "boilerplate",
+    "generator",
+    "module",
+    "website"
+  ],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shannonmoeller/whim/issues"
+  },
+  "homepage": "https://github.com/shannonmoeller/whim",
   "dependencies": {
-    "gulp-template": "^3.0.0",
-    "inquirer": "^0.10.1",
-    "vinyl-fs": "^0.3.14",
-    "ygor": "^1.3.2"
+    "gulp-template": "^3.1.0",
+    "inquirer": "^0.12.0",
+    "vinyl-fs": "^2.4.2",
+    "ygor": "^1.5.3"
   },
   "devDependencies": {
-    "watch": "^0.17.1",
-    "xo": "^0.12.1"
+    "chokidar-cli": "^1.2.0",
+    "xo": "^0.13.0"
   },
-  "scripts": {
-    "test": "xo *.js",
-    "watch": "watch 'npm test' src test -du"
+  "engines": {
+    "node": ">= 0.12"
   }
 }

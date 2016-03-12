@@ -1,0 +1,90 @@
+:root {
+	--aspect: {
+		& {
+			position: relative;
+			overflow: hidden;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		&_block {
+			display: block;
+		}
+
+		&_block:after {
+			content: " ";
+			display: block;
+			padding-top: 100%;
+			width: 100%;
+		}
+
+		&_block_3x1:after {
+			padding-top: 30%;
+		}
+
+		&_block_4x3:after {
+			padding-top: 75%;
+		}
+
+		&_block_16x9:after {
+			padding-top: 56.25%;
+		}
+
+		&_inline {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&_inline:after {
+			content: " ";
+			display: block;
+			height: 1em;
+			width: 1em;
+		}
+
+		&_inline_3x1:after {
+			width: 3em;
+		}
+
+		&_inline_4x3:after {
+			width: 2.4em;
+		}
+
+		&_inline_16x9:after {
+			width: 3.2em;
+		}
+
+		&-bd {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+		}
+	};
+
+	--m-aspect: {
+		&_lb {
+			background-size: contain;
+		}
+	};
+}
+
+.aspect { @apply --aspect; }
+.m-aspect { @apply --m-aspect; }
+
+@media (--small) {
+	.bp_s-aspect { @apply --aspect; }
+	.bp_s-m-aspect { @apply --m-aspect; }
+}
+
+@media (--medium) {
+	.bp_m-aspect { @apply --aspect; }
+	.bp_m-m-aspect { @apply --m-aspect; }
+}
+
+@media (--large) {
+	.bp_l-aspect { @apply --aspect; }
+	.bp_l-m-aspect { @apply --m-aspect; }
+}

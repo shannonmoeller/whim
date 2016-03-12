@@ -7,42 +7,40 @@ var template = require('gulp-template');
 var vinylFs = require('vinyl-fs');
 var ygor = require('ygor');
 
-function generate(base, src, dest, answers) {
-	vinylFs
-		.src(src, {base: base})
-		.pipe(template(answers))
-		.pipe(vinylFs.dest(dest));
+function generate(name, prompts) {
+	var base = path.join(__dirname, 'templates', name);
+	var src = path.join(base, '**/{*,.*}');
+	var dest = process.cwd();
+
+	inquirer.prompt(prompts, function (answers) {
+		vinylFs
+			.src(src, {base: base})
+			.pipe(template(answers))
+			.pipe(vinylFs.dest(dest));
+	});
 }
 
 function module() {
-	var base = path.join(__dirname, 'templates/module');
-	var src = path.join(base, '/**/{*,.*}');
-	var dest = process.cwd();
-	var prompts = [
+	generate('module', [
 		{
 			name: 'slug',
 			message: 'slug',
 			default: function (answers) {
-				return answers.domain
-					.split('.')
-					.reverse()
-					.join('-');
+				return process
+					.cwd()
+					.toLowerCase()
+					.replace(/[^\w-]*/g, '-');
 			}
 		},
 		{
 			name: 'description',
 			message: 'description'
 		}
-	];
-
-	inquirer.prompt(prompts, generate.bind(null, base, src, dest));
+	]);
 }
 
 function website() {
-	var base = path.join(__dirname, 'templates/website');
-	var src = path.join(base, '/**/{*,.*}');
-	var dest = process.cwd();
-	var prompts = [
+	generate('website', [
 		{
 			name: 'ssl',
 			message: 'ssl',
@@ -68,9 +66,7 @@ function website() {
 			name: 'description',
 			message: 'description'
 		}
-	];
-
-	inquirer.prompt(prompts, generate.bind(null, base, src, dest));
+	]);
 }
 
 ygor

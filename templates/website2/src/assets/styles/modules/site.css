@@ -1,0 +1,21 @@
+.site {
+	padding: 6em;
+}
+
+.site-skip {
+	position: absolute;
+	left: 50%;
+	top: 1em;
+	opacity: 0;
+	transform: translateX(-50%);
+}
+
+.site-skip:hover,
+.site-skip:focus {
+	opacity: 1;
+}
+
+.site-hd,
+.site-bd {
+	margin-bottom: 3em;
+}
