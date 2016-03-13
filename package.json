@@ -1,6 +1,6 @@
 {
   "name": "whim",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A protean boilerplate generator based on my mercurial preferences.",
   "bin": "index.js",
   "main": false,
