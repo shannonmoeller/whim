@@ -2,29 +2,30 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Tip][amazon-img]][amazon-url]
 
-A constantly-changing static-site boilerplate generator based on my evanescent preferences.
+A protean boilerplate generator based on my mercurial preferences.
+
+## Install
+
+    $ npm install --global whim
 
 ## Usage
 
-```bash
-npm install -g whim
-whim
-```
+### Module
+
+    $ whim module
+
+### Website
+
+    $ whim website
 
 ## Flavors of the month
 
-- Server-side
-  - [Gulp](http://gulpjs.com)
-  - [Handlebars](http://handlebarsjs.com)
-  - [PostCSS](https://github.com/postcss/postcss)
-  - [Babel](https://babeljs.io)
-  - [svgstore](https://github.com/w0rm/gulp-svgstore)
-- Client-side
-  - [Future JS](http://babeljs.io/docs/learn-es2015/)
-  - [Future CSS](http://cssnext.io/features/)
-  - [document.registerElement](https://github.com/WebReflection/document-register-element)
-  - [window.fetch](https://github.com/github/fetch)
-  - [SVG External Content](https://github.com/jonathantneal/svg4everybody)
+- [Ygor](https://github.com/shannonmoeller/ygor)
+- [Babel](https://babeljs.io)
+- [PostCSS](https://github.com/postcss/postcss)
+- [Handlebars](http://handlebarsjs.com)
+- [SVG External Content](https://github.com/jonathantneal/svg4everybody)
+- [document.registerElement](https://github.com/WebReflection/document-register-element)
 
 ## Test
 
