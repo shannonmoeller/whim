@@ -1,58 +1,9 @@
 *,
-*:before,
-*:after {
+*::after,
+*::before {
 	box-sizing: border-box;
 }
 
 html {
-	overflow-x: hidden;
-	overflow-y: scroll;
-	font-family: var(--FONT_FAMILY_PRIMARY);
-	font-size: var(--FONT_SIZE_SMALL);
-	line-height: var(--LINE_HEIGHT_PRIMARY);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-}
-
-body {
-	background-color: var(--COLOR_BACKGROUND);
-	color: var(--COLOR_FOREGROUND);
-	line-height: var(--LINE_HEIGHT_PRIMARY);
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
-}
-
-button {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	color: inherit;
-	font-size: 100%;
-	font-weight: inherit;
-	font-style: inherit;
-	font-family: inherit;
-	letter-spacing: inherit;
-	line-height: inherit;
-	vertical-align: baseline;
-}
-
-img {
-	max-width: 100%;
-}
-
-input {
-	color: inherit;
-	font-size: 100%;
-	font-weight: inherit;
-	font-style: inherit;
-	font-family: inherit;
-	letter-spacing: inherit;
-	line-height: inherit;
-	vertical-align: baseline;
+	font-family: verdana, sans-serif;
 }

@@ -1,9 +1,30 @@
 ---
-title: '''s Site'
-canonical: ''
+title: Home
+styles:
+  - /assets/styles/home.css
+scripts:
+  - /assets/scripts/home.js
 ---
 {{#extend "layout"}}
 	{{#content "body"}}
-		Home
+		<my-home>
+			<div class="bp_m-grid bp_l-grid bp_l-m-grid_ctr">
+				<div class="bp_m-grid-col_1fo4 bp_l-grid-col_1of3">
+					<div class="aspect aspect_block">
+						<svg class="aspect-bd" role="presentation">
+							<use xlink:href="/assets/images/sprites.svg#ghost" />
+						</svg>
+					</div>
+				</div>
+
+				<div class="bp_m-grid-col_1fo4 bp_l-grid-col_1of3">
+					<div class="aspect aspect_block">
+						<svg class="aspect-bd" role="presentation">
+							<use xlink:href="/assets/images/sprites.svg#taco" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</my-home>
 	{{/content}}
 {{/extend}}

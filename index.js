@@ -7,16 +7,21 @@ var template = require('gulp-template');
 var vinylFs = require('vinyl-fs');
 var ygor = require('ygor');
 
-function generate(name, prompts) {
-	var base = path.join(__dirname, 'templates', name);
+function copyDir(dir, answers) {
+	var base = path.join(__dirname, 'templates', dir);
 	var src = path.join(base, '**/{*,.*}');
 	var dest = process.cwd();
 
-	inquirer.prompt(prompts, function (answers) {
-		vinylFs
-			.src(src, {base: base})
-			.pipe(template(answers))
-			.pipe(vinylFs.dest(dest));
+	vinylFs
+		.src(src, {base: base})
+		.pipe(template(answers))
+		.pipe(vinylFs.dest(dest));
+}
+
+function generate(dir, questions) {
+	inquirer.prompt(questions, function (answers) {
+		copyDir('common', answers);
+		copyDir(dir, answers);
 	});
 }
 
@@ -26,10 +31,10 @@ function module() {
 			name: 'slug',
 			message: 'slug',
 			default: function (answers) {
-				return process
-					.cwd()
+				return path
+					.basename(process.cwd())
 					.toLowerCase()
-					.replace(/[^\w-]*/g, '-');
+					.replace(/[^\w-]+/g, '-');
 			}
 		},
 		{
