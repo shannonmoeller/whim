@@ -2,7 +2,7 @@
   "name": "<%= slug %>",
   "version": "1.0.0",
   "description": "<%= description %>",
-  "main": "src/<%= slug %>.js",
+  "main": "src/index.js",
   "scripts": {
     "coveralls": "nyc report -r text-lcov | coveralls",
     "pretest": "xo src/*.js test/*.js",
@@ -36,7 +36,7 @@
     "chokidar-cli": "^1.2.0",
     "coveralls": "^2.11.6",
     "nyc": "^6.0.0",
-    "xo": "^0.12.1"
+    "xo": "^0.13.0"
   },
   "engines": {
     "node": ">= 0.12"
