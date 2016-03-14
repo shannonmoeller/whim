@@ -30,7 +30,7 @@ function module() {
 		{
 			name: 'slug',
 			message: 'slug',
-			default: function (answers) {
+			default: function () {
 				return path
 					.basename(process.cwd())
 					.toLowerCase()

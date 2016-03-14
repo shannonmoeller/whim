@@ -1,6 +1,6 @@
 # `whim`
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Tip][amazon-img]][amazon-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
 A protean boilerplate generator based on my mercurial preferences.
 
@@ -42,5 +42,3 @@ Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 [downloads-img]: http://img.shields.io/npm/dm/whim.svg?style=flat-square
 [npm-img]:       http://img.shields.io/npm/v/whim.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/whim
-[travis-img]:    http://img.shields.io/travis/shannonmoeller/whim.svg?style=flat-square
-[travis-url]:    https://travis-ci.org/shannonmoeller/whim
