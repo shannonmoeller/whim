@@ -237,7 +237,9 @@ async function build() {
 async function watch() {
 	const browser = browserSync.create();
 	const rebuild = debounce(() => {
-		build().then(browser.reload, ygor.error);
+		build()
+			.then(browser.reload)
+			.catch(ygor.error);
 	});
 
 	browser
