@@ -22,9 +22,18 @@ A protean boilerplate generator based on my mercurial preferences.
 
 - [Ygor](https://github.com/shannonmoeller/ygor)
 - [Babel](https://babeljs.io)
+  - babel-preset-es2015
+  - babel-preset-stage-2
 - [PostCSS](https://github.com/postcss/postcss)
+  - postcss-import
+  - postcss-apply
+  - postcss-cssnext
 - [Handlebars](http://handlebarsjs.com)
+  - handlebars-wax
+  - handlebars-layouts
 - [SVG External Content](https://github.com/jonathantneal/svg4everybody)
+  - svgstore
+  - svg4everybody
 - [document.registerElement](https://github.com/WebReflection/document-register-element)
 
 ## Test
