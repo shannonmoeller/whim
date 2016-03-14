@@ -1,4 +1,4 @@
-# `whim`
+<img src="https://cloud.githubusercontent.com/assets/155164/13732439/293121f0-e959-11e5-9aae-8ade3994058c.png" alt="whim" width="360" style="max-width:100%;height:1%;" />
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Tip][amazon-img]][amazon-url]
 
