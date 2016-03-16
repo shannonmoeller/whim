@@ -1,3 +1,8 @@
-import '../elements/my-blog/element';
+/**
+ * # Blog-Specific Scripts
+ */
 
-console.log('blog');
+/**
+ * ## Elements
+ */
+import '../elements/my-blog/element';

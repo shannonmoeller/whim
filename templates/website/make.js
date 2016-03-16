@@ -15,8 +15,9 @@ import frontMatter from 'front-matter';
 import postcss from 'postcss';
 import postcssApply from 'postcss-apply';
 import postcssImport from 'postcss-import';
+import postcssNano from 'cssnano';
 import postcssNext from 'postcss-cssnext';
-import cssnano from 'cssnano';
+import postcssUrl from 'postcss-cssnext';
 
 import browserify from 'browserify-incremental';
 import babelify from 'babelify';
@@ -73,21 +74,26 @@ async function markup() {
  *     bar.css ━┫
  *              ┗━ postcss
  *                 ┗━ import
- *                    ┗━ apply
- *                       ┗━ cssnext
- *                          ┗━ cssnano ━┓
- *                                      ┣━ foo.css
- *                                      ┣━ foo.css.map
- *                                      ┣━ bar.css
- *                                      ┗━ bar.css.map
+ *                    ┗━ url
+ *                       ┗━ apply
+ *                          ┗━ cssnext
+ *                             ┗━ cssnano ━┓
+ *                                         ┣━ foo.css
+ *                                         ┣━ foo.css.map
+ *                                         ┣━ bar.css
+ *                                         ┗━ bar.css.map
  */
 async function styles() {
 	const {srcFiles, destFiles} = await find('src/assets/styles/*.css');
 	const pipeline = postcss([
 		postcssImport(),
+		postcssUrl(),
 		postcssApply(),
 		postcssNext(),
-		cssnano()
+		postcssNano({
+			// cssnext does this
+			autoprefixer: false
+		})
 	]);
 
 	await Promise.all(
@@ -243,7 +249,7 @@ async function watch() {
 	});
 
 	browser
-		.init({server: ['dist', 'coverage']}, rebuild);
+		.init({server: ['dist', 'coverage'], open: false}, rebuild);
 
 	browser
 		.watch('src', {ignored: /[\/\\]\./})

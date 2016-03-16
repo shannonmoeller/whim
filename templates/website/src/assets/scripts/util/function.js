@@ -1,3 +1,7 @@
+/**
+ * # Function Utilities
+ */
+
 export function debounce(fn, delay = 400) {
 	return function debounced() {
 		if (debounced.timeout) {

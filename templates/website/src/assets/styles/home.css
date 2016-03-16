@@ -1,5 +1,10 @@
-@import '../elements/my-home/element.css';
+/**
+ * # Home-Specific Styles
+ */
 
-body {
-	background: #efd;
-}
+/**
+ * ## Elements
+ *
+ * Custom element default styles.
+ */
+@import '../elements/my-home/element.css';

@@ -11,7 +11,7 @@
     "pretest": "xo",
     "test": "nyc ava -v",
     "posttest": "nyc report -r lcov",
-    "watch": "chokidar '{src,test}/**/{*,.*}' -c 'npm test'"
+    "watch": "chokidar '{src,test}/**' -c 'npm test'"
   },
   "repository": "shannonmoeller/<%= domain %>",
   "keywords": [],
@@ -23,6 +23,8 @@
   "homepage": "http<%= ssl ? 's' : '' %>://<%= domain %>",
   "dependencies": {
     "document-register-element": "^0.5.4",
+    "dom-shims": "0.1.4",
+    "morphdom": "^1.1.2",
     "reset-css": "^2.0.2011012603",
     "svg4everybody": "^2.0.3"
   },
@@ -57,6 +59,7 @@
     "postcss-apply": "^0.1.0",
     "postcss-cssnext": "^2.4.0",
     "postcss-import": "^8.0.2",
+    "postcss-url": "5.1.1",
     "svgo": "^0.6.2",
     "svgstore": "^1.0.0",
     "xo": "^0.12.1",

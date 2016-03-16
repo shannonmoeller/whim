@@ -1,3 +1,7 @@
+/**
+ * # File System Utilities
+ */
+
 import globby from 'globby';
 
 export async function find(glob) {
