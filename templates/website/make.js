@@ -1,8 +1,14 @@
-import {copy, createReadStream, createWriteStream, ensureFile, outputFile, readFile, remove} from 'fs-promise';
+import {
+	copy,
+	createWriteStream,
+	ensureFile,
+	outputFile,
+	readFile,
+	remove
+} from 'fs-promise';
 
 import browserSync from 'browser-sync';
 import chalk from 'chalk';
-import concat from 'concat-stream';
 import globby from 'globby';
 import path from 'path';
 import ygor from 'ygor';
@@ -28,8 +34,8 @@ import factorBundle from 'factor-bundle';
 import Svgo from 'svgo';
 import svgstore from 'svgstore';
 
-import {debounce} from './src/assets/scripts/util/function';
-import {find} from './src/assets/scripts/util/fs';
+import { debounce } from './src/assets/scripts/util/function';
+import { find } from './src/assets/scripts/util/fs';
 
 /**
  * # Clean
@@ -51,8 +57,8 @@ async function clean() {
  *                                     ┗━ bar.html
  */
 async function markup() {
-	const {srcFiles, destFiles} = await find('src/**/*.html');
-	const wax = handlebarsWax(handlebars.create(), {bustCache: true})
+	const { srcFiles, destFiles } = await find('src/**/*.{hbs,html}');
+	const wax = handlebarsWax(handlebars.create(), { bustCache: true })
 		.helpers(handlebarsLayouts)
 		.partials('src/assets/partials/**/*.hbs');
 
@@ -62,7 +68,7 @@ async function markup() {
 			const content = frontMatter(await readFile(src, 'utf8'));
 			const markup = wax.compile(content.body)(content.attributes);
 
-			await outputFile(dest, markup);
+			return outputFile(dest, markup);
 		})
 	);
 }
@@ -84,16 +90,13 @@ async function markup() {
  *                                         ┗━ bar.css.map
  */
 async function styles() {
-	const {srcFiles, destFiles} = await find('src/assets/styles/*.css');
+	const { srcFiles, destFiles } = await find('src/assets/styles/*.css');
 	const pipeline = postcss([
 		postcssImport(),
-		postcssUrl(),
 		postcssApply(),
-		postcssNext(),
-		postcssNano({
-			// cssnext does this
-			autoprefixer: false
-		})
+		postcssUrl(),
+		postcssNext({ warnForDuplicates: false }),
+		postcssNano({ autoprefixer: false })
 	]);
 
 	await Promise.all(
@@ -101,11 +104,11 @@ async function styles() {
 			const dest = destFiles[i];
 			const content = await readFile(src, 'utf8');
 
-			await pipeline
+			return pipeline
 				.process(content, {
 					from: src,
 					to: dest,
-					map: {inline: false}
+					map: { inline: false }
 				})
 				.then(result => Promise.all([
 					outputFile(dest, result.css),
@@ -132,37 +135,34 @@ async function styles() {
  *                                   ┗━ bar.js.map
  */
 async function scripts() {
-	const {srcFiles, destFiles} = await find('src/assets/scripts/*.js');
-	const destCommon = 'dist/assets/scripts/common.js';
-	const destRoot = path.relative('dist/assets/scripts', '.');
+	const cacheFile = '.cache/browserify.json';
+	const { srcFiles, destFiles } = await find('src/assets/scripts/*.js');
 
-	await Promise.all(
-		destFiles.map(dest => ensureFile(dest))
-	);
+	const destCommon = 'dist/assets/scripts/common.js';
+	const mapCommon = destCommon + '.map';
+	const relCommon = path.relative(path.dirname(destCommon), __dirname);
+
+	await ensureFile(cacheFile);
+	await Promise.all(destFiles.map(dest => ensureFile(dest)));
 
 	await new Promise((resolve, reject) => {
-		browserify({cacheFile: '.cache/browserify.json', debug: true})
+		browserify({ cacheFile, debug: true })
 			.add(srcFiles)
+			.transform(babelify, { presets: ['es2015', 'stage-2'] })
 			.plugin(errorify)
-			.plugin(factorBundle, {outputs: destFiles})
-			.transform(babelify, {presets: ['es2015', 'stage-2']})
+			.plugin(factorBundle, { outputs: destFiles })
+			.on('factor.pipeline', (file, pipeline) => {
+				const mapFile = file.replace('src', 'dest') + '.map';
+				const relFile = path.relative(path.dirname(file), __dirname);
+
+				pipeline.get('wrap').push(exorcist(mapFile, null, relFile));
+			})
 			.bundle()
+			.pipe(exorcist(mapCommon, null, relCommon))
 			.pipe(createWriteStream(destCommon))
-			.on('finish', resolve)
+			.on('finish', () => setTimeout(resolve, 0))
 			.on('error', reject);
 	});
-
-	await Promise.all(
-		destFiles.concat(destCommon).map(async dest => {
-			await new Promise((resolve, reject) => {
-				createReadStream(dest)
-					.pipe(exorcist(dest + '.map', null, destRoot))
-					.pipe(concat(function (result) {
-						outputFile(dest, result).then(resolve, reject);
-					}));
-			});
-		})
-	);
 }
 
 /**
@@ -186,7 +186,7 @@ async function graphics() {
 			const content = await readFile(src, 'utf8');
 			const svg = await new Promise(cb => svgo.optimize(content, cb));
 
-			sprites.add(id, svg.data);
+			return sprites.add(id, svg.data);
 		})
 	);
 
@@ -203,7 +203,7 @@ async function graphics() {
  *                        ┗━ bar.png
  */
 async function statics() {
-	const {srcFiles, destFiles} = await find([
+	const { srcFiles, destFiles } = await find([
 		'src/assets/fonts/**/*.*',
 		'src/assets/images/**/*.!(svg)'
 	]);
@@ -219,7 +219,6 @@ async function statics() {
  * Rebuilds everything from scratch.
  */
 async function build() {
-	console.log(chalk.green('Building files...'));
 	console.time(chalk.green('Build complete'));
 
 	await clean();
@@ -236,32 +235,59 @@ async function build() {
 }
 
 /**
- * # Watch
+ * # Development Server
  *
  * Serves files, watches for changes, rebuilds, and reloads.
  */
-async function watch() {
+async function dev() {
 	const browser = browserSync.create();
-	const rebuild = debounce(() => {
-		build()
+
+	const initOptions = {
+		server: ['dist', 'coverage'],
+		open: false
+	};
+
+	const watchOptions = {
+		awaitWriteFinish: true,
+		ignored: /[\/\\]\./,
+		ignoreInitial: true
+	};
+
+	async function run(fn) {
+		console.time(chalk.green(fn.name));
+
+		await fn()
 			.then(browser.reload)
 			.catch(ygor.error);
-	});
 
-	browser
-		.init({server: ['dist', 'coverage'], open: false}, rebuild);
+		console.timeEnd(chalk.green(fn.name));
+	}
 
-	browser
-		.watch('src', {ignored: /[\/\\]\./})
-		.on('raw', rebuild);
+	async function watch(pattern, fn) {
+		browser.watch(
+			pattern,
+			watchOptions,
+			debounce(() => run(fn))
+		);
+	}
+
+	async function init() {
+		await run(build);
+
+		watch('src/**/*.{hbs,html}', markup);
+		watch('src/**/*.css', styles);
+		watch('src/**/*.js', scripts);
+	}
+
+	browser.init(initOptions, init);
 }
 
 ygor
-	.task('default', build)
 	.task('clean', clean)
 	.task('markup', markup)
 	.task('styles', styles)
 	.task('scripts', scripts)
 	.task('graphics', graphics)
 	.task('statics', statics)
-	.task('watch', watch);
+	.task('default', build)
+	.task('dev', dev);

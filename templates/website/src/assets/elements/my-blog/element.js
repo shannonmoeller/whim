@@ -5,7 +5,7 @@
  *     </my-blog>
  */
 
-import {register} from '../../scripts/util/dom';
+import { register } from '../../scripts/util/dom';
 
 /**
  * @class MyBlogElement

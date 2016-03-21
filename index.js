@@ -13,7 +13,7 @@ function copyDir(dir, answers) {
 	var dest = process.cwd();
 
 	vinylFs
-		.src(src, {base: base})
+		.src(src, { base: base })
 		.pipe(template(answers))
 		.pipe(vinylFs.dest(dest));
 }

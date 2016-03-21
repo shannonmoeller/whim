@@ -5,7 +5,7 @@
  *     </my-home>
  */
 
-import {register} from '../../scripts/util/dom';
+import { register } from '../../scripts/util/dom';
 
 /**
  * @class MyHomeElement

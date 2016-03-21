@@ -1,4 +1,4 @@
-import {foo} from '../src/index';
+import { foo } from '../src/index';
 import test from 'ava';
 
 test('should be bar', async assert => {
