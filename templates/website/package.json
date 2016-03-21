@@ -89,7 +89,9 @@
     "rules": {
       "brace-style": [2, "stroustrup"],
       "eqeqeq": [2, "allow-null"],
-      "object-curly-spacing": [2, "always"]
+      "no-eq-null": 0,
+      "object-curly-spacing": [2, "always"],
+      "babel/object-curly-spacing": [2, "always"]
     }
   }
 }
