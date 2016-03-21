@@ -85,6 +85,11 @@
     "env": [
       "browser",
       "node"
-    ]
+    ],
+    "rules": {
+      "brace-style": [2, "allman"],
+      "eqeqeq": [2, "allow-null"],
+      "object-curly-spacing": [2, "always"]
+    }
   }
 }
