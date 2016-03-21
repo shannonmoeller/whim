@@ -87,7 +87,7 @@
       "node"
     ],
     "rules": {
-      "brace-style": [2, "allman"],
+      "brace-style": [2, "stroustrup"],
       "eqeqeq": [2, "allow-null"],
       "object-curly-spacing": [2, "always"]
     }
