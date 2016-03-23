@@ -46,7 +46,7 @@ export function html(literalSections, ...substs) {
 		}
 
 		// Don't print a literal null, undefined, or Boolean.
-		if (subst === undefined || subst === null || typeof subst === 'boolean') {
+		if (subst == null || typeof subst === 'boolean') {
 			subst = '';
 		}
 

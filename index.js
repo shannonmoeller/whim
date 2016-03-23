@@ -7,6 +7,10 @@ var template = require('gulp-template');
 var vinylFs = require('vinyl-fs');
 var ygor = require('ygor');
 
+var templateOptions = {
+	interpolate: /<%=([\s\S]+?)%>/g
+};
+
 function copyDir(dir, answers) {
 	var base = path.join(__dirname, 'templates', dir);
 	var src = path.join(base, '**/{*,.*}');
@@ -14,7 +18,7 @@ function copyDir(dir, answers) {
 
 	vinylFs
 		.src(src, { base: base })
-		.pipe(template(answers))
+		.pipe(template(answers, templateOptions))
 		.pipe(vinylFs.dest(dest));
 }
 
@@ -70,6 +74,12 @@ function website() {
 		{
 			name: 'description',
 			message: 'description'
+		},
+		{
+			name: 'splitBundles',
+			message: 'common js bundle',
+			type: 'confirm',
+			default: false
 		}
 	]);
 }

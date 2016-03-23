@@ -6,10 +6,14 @@
  * ## Polyfills
  */
 
-import 'dom-shims';
+import 'babel-polyfill';
 import 'document-register-element';
+import 'dom-shims';
+import 'whatwg-fetch';
+import keyboardeventKey from 'keyboardevent-key-polyfill';
 import svg4everybody from 'svg4everybody';
 
+keyboardeventKey.polyfill();
 svg4everybody();
 
 /**

@@ -28,13 +28,13 @@ import postcssUrl from 'postcss-cssnext';
 import browserify from 'browserify-incremental';
 import babelify from 'babelify';
 import errorify from 'errorify';
-import exorcist from 'exorcist';
-import factorBundle from 'factor-bundle';
+import exorcist from 'exorcist';<% if (splitBundles) { %>
+import factorBundle from 'factor-bundle';<% } %>
 
 import Svgo from 'svgo';
 import svgstore from 'svgstore';
 
-import { debounce } from './src/assets/scripts/util/function';
+import { debounce, timer } from './src/assets/scripts/util/function';
 import { find } from './src/assets/scripts/util/fs';
 
 /**
@@ -118,7 +118,7 @@ async function styles() {
 	);
 }
 
-/**
+<% if (splitBundles) { %>/**
  * # Scripts
  *
  *     foo.js ━┓
@@ -135,35 +135,75 @@ async function styles() {
  *                                   ┗━ bar.js.map
  */
 async function scripts() {
-	const cacheFile = '.cache/browserify.json';
 	const { srcFiles, destFiles } = await find('src/assets/scripts/*.js');
-
+	const cacheFile = '.cache/browserify.json';
 	const destCommon = 'dist/assets/scripts/common.js';
-	const mapCommon = destCommon + '.map';
-	const relCommon = path.relative(path.dirname(destCommon), __dirname);
+	const destRoot = path.relative('dist/assets/scripts', '.');
 
 	await ensureFile(cacheFile);
+
 	await Promise.all(destFiles.map(dest => ensureFile(dest)));
 
 	await new Promise((resolve, reject) => {
 		browserify({ cacheFile, debug: true })
 			.add(srcFiles)
-			.transform(babelify, { presets: ['es2015', 'stage-2'] })
 			.plugin(errorify)
 			.plugin(factorBundle, { outputs: destFiles })
-			.on('factor.pipeline', (file, pipeline) => {
-				const mapFile = file.replace('src', 'dest') + '.map';
-				const relFile = path.relative(path.dirname(file), __dirname);
-
-				pipeline.get('wrap').push(exorcist(mapFile, null, relFile));
-			})
+			.transform(babelify, { presets: ['es2015', 'stage-2'] })
 			.bundle()
-			.pipe(exorcist(mapCommon, null, relCommon))
 			.pipe(createWriteStream(destCommon))
-			.on('finish', () => setTimeout(resolve, 0))
+			.on('finish', resolve)
 			.on('error', reject);
 	});
-}
+
+	await Promise.all(
+		destFiles.concat(destCommon).map(async dest => {
+			await new Promise((resolve, reject) => {
+				createReadStream(dest)
+					.pipe(exorcist(dest + '.map', null, destRoot))
+					.pipe(concat(function (result) {
+						outputFile(dest, result).then(resolve, reject);
+					}));
+			});
+		})
+	);
+}<% } else { %>/**
+ * # Scripts
+ *
+ *     foo.js ━┓
+ *             ┗━ browserify-incremental
+ *                ┗━ babelify
+ *                   ┗━ exorcist ━┓
+ *                                ┣━ foo.js
+ *                                ┗━ foo.js.map
+ */
+async function scripts() {
+	const { srcFiles, destFiles } = await find('src/assets/scripts/*.js');
+	const cacheFile = '.cache/browserify.json';
+	const destRoot = path.relative('dist/assets/scripts', '.');
+
+	await ensureFile(cacheFile);
+
+	await Promise.all(
+		srcFiles.map(async (src, i) => {
+			const dest = destFiles[i];
+
+			await ensureFile(dest);
+
+			return new Promise((resolve, reject) => {
+				browserify({ cacheFile, debug: true })
+					.add(src)
+					.plugin(errorify)
+					.transform(babelify, { presets: ['es2015', 'stage-2'] })
+					.bundle()
+					.pipe(exorcist(dest + '.map', null, destRoot))
+					.pipe(createWriteStream(dest))
+					.on('finish', resolve)
+					.on('error', reject);
+			});
+		})
+	);
+}<% } %>
 
 /**
  * # Graphics
@@ -219,7 +259,7 @@ async function statics() {
  * Rebuilds everything from scratch.
  */
 async function build() {
-	console.time(chalk.green('Build complete'));
+	const clock = timer(chalk.green(`build`));
 
 	await clean();
 
@@ -231,7 +271,7 @@ async function build() {
 		statics()
 	]);
 
-	console.timeEnd(chalk.green('Build complete'));
+	clock();
 }
 
 /**
@@ -248,19 +288,17 @@ async function dev() {
 	};
 
 	const watchOptions = {
-		awaitWriteFinish: true,
 		ignored: /[\/\\]\./,
 		ignoreInitial: true
 	};
 
 	async function run(fn) {
-		console.time(chalk.green(fn.name));
+		const clock = timer(chalk.green(`${fn.name}`));
 
 		await fn()
+			.then(clock)
 			.then(browser.reload)
 			.catch(ygor.error);
-
-		console.timeEnd(chalk.green(fn.name));
 	}
 
 	async function watch(pattern, fn) {
@@ -272,7 +310,7 @@ async function dev() {
 	}
 
 	async function init() {
-		await run(build);
+		await build();
 
 		watch('src/**/*.{hbs,html}', markup);
 		watch('src/**/*.css', styles);
