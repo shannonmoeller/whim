@@ -33,5 +33,14 @@
   },
   "engines": {
     "node": ">= 0.12"
+  },
+  "xo": {
+    "rules": {
+      "brace-style": [2, "stroustrup"],
+      "eqeqeq": [2, "allow-null"],
+      "no-eq-null": 0,
+      "object-curly-spacing": [2, "always"],
+      "babel/object-curly-spacing": [2, "always"]
+    }
   }
 }

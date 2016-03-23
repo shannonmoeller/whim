@@ -1,5 +1,10 @@
-@import '../elements/my-blog/element.css';
+/**
+ * # Blog-Specific Styles
+ */
 
-body {
-	background: #def;
-}
+/**
+ * ## Elements
+ *
+ * Custom element default styles.
+ */
+@import '../elements/my-blog/element.css';

@@ -1,3 +1,8 @@
-import '../elements/my-home/element';
+/**
+ * # Home-specific Scripts
+ */
 
-console.log('home');
+/**
+ * ## Elements
+ */
+import '../elements/my-home/element';

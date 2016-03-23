@@ -40,5 +40,33 @@
   },
   "engines": {
     "node": ">= 0.12"
+  },
+  "xo": {
+    "env": [
+      "node"
+    ],
+    "rules": {
+      "brace-style": [
+        2,
+        "stroustrup"
+      ],
+      "eqeqeq": [
+        2,
+        "allow-null"
+      ],
+      "no-eq-null": 0,
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "operator-linebreak": [
+        2,
+        "before"
+      ],
+      "babel/object-curly-spacing": [
+        2,
+        "always"
+      ]
+    }
   }
 }

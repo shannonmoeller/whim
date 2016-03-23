@@ -1,8 +1,14 @@
-import {copy, createReadStream, createWriteStream, ensureFile, outputFile, readFile, remove} from 'fs-promise';
+import {
+	copy,
+	createWriteStream,
+	ensureFile,
+	outputFile,
+	readFile,
+	remove
+} from 'fs-promise';
 
 import browserSync from 'browser-sync';
 import chalk from 'chalk';
-import concat from 'concat-stream';
 import globby from 'globby';
 import path from 'path';
 import ygor from 'ygor';
@@ -15,20 +21,21 @@ import frontMatter from 'front-matter';
 import postcss from 'postcss';
 import postcssApply from 'postcss-apply';
 import postcssImport from 'postcss-import';
+import postcssNano from 'cssnano';
 import postcssNext from 'postcss-cssnext';
-import cssnano from 'cssnano';
+import postcssUrl from 'postcss-cssnext';
 
 import browserify from 'browserify-incremental';
 import babelify from 'babelify';
 import errorify from 'errorify';
-import exorcist from 'exorcist';
-import factorBundle from 'factor-bundle';
+import exorcist from 'exorcist';<% if (splitBundles) { %>
+import factorBundle from 'factor-bundle';<% } %>
 
 import Svgo from 'svgo';
 import svgstore from 'svgstore';
 
-import {debounce} from './src/assets/scripts/util/function';
-import {find} from './src/assets/scripts/util/fs';
+import { debounce, timer } from './src/assets/scripts/util/function';
+import { find } from './src/assets/scripts/util/fs';
 
 /**
  * # Clean
@@ -50,8 +57,8 @@ async function clean() {
  *                                     ┗━ bar.html
  */
 async function markup() {
-	const {srcFiles, destFiles} = await find('src/**/*.html');
-	const wax = handlebarsWax(handlebars.create(), {bustCache: true})
+	const { srcFiles, destFiles } = await find('src/**/*.{hbs,html}');
+	const wax = handlebarsWax(handlebars.create(), { bustCache: true })
 		.helpers(handlebarsLayouts)
 		.partials('src/assets/partials/**/*.hbs');
 
@@ -61,7 +68,7 @@ async function markup() {
 			const content = frontMatter(await readFile(src, 'utf8'));
 			const markup = wax.compile(content.body)(content.attributes);
 
-			await outputFile(dest, markup);
+			return outputFile(dest, markup);
 		})
 	);
 }
@@ -73,21 +80,23 @@ async function markup() {
  *     bar.css ━┫
  *              ┗━ postcss
  *                 ┗━ import
- *                    ┗━ apply
- *                       ┗━ cssnext
- *                          ┗━ cssnano ━┓
- *                                      ┣━ foo.css
- *                                      ┣━ foo.css.map
- *                                      ┣━ bar.css
- *                                      ┗━ bar.css.map
+ *                    ┗━ url
+ *                       ┗━ apply
+ *                          ┗━ cssnext
+ *                             ┗━ cssnano ━┓
+ *                                         ┣━ foo.css
+ *                                         ┣━ foo.css.map
+ *                                         ┣━ bar.css
+ *                                         ┗━ bar.css.map
  */
 async function styles() {
-	const {srcFiles, destFiles} = await find('src/assets/styles/*.css');
+	const { srcFiles, destFiles } = await find('src/assets/styles/*.css');
 	const pipeline = postcss([
 		postcssImport(),
 		postcssApply(),
-		postcssNext(),
-		cssnano()
+		postcssUrl(),
+		postcssNext({ warnForDuplicates: false }),
+		postcssNano({ autoprefixer: false })
 	]);
 
 	await Promise.all(
@@ -95,11 +104,11 @@ async function styles() {
 			const dest = destFiles[i];
 			const content = await readFile(src, 'utf8');
 
-			await pipeline
+			return pipeline
 				.process(content, {
 					from: src,
 					to: dest,
-					map: {inline: false}
+					map: { inline: false }
 				})
 				.then(result => Promise.all([
 					outputFile(dest, result.css),
@@ -109,7 +118,7 @@ async function styles() {
 	);
 }
 
-/**
+<% if (splitBundles) { %>/**
  * # Scripts
  *
  *     foo.js ━┓
@@ -126,20 +135,21 @@ async function styles() {
  *                                   ┗━ bar.js.map
  */
 async function scripts() {
-	const {srcFiles, destFiles} = await find('src/assets/scripts/*.js');
+	const { srcFiles, destFiles } = await find('src/assets/scripts/*.js');
+	const cacheFile = '.cache/browserify.json';
 	const destCommon = 'dist/assets/scripts/common.js';
 	const destRoot = path.relative('dist/assets/scripts', '.');
 
-	await Promise.all(
-		destFiles.map(dest => ensureFile(dest))
-	);
+	await ensureFile(cacheFile);
+
+	await Promise.all(destFiles.map(dest => ensureFile(dest)));
 
 	await new Promise((resolve, reject) => {
-		browserify({cacheFile: '.cache/browserify.json', debug: true})
+		browserify({ cacheFile, debug: true })
 			.add(srcFiles)
 			.plugin(errorify)
-			.plugin(factorBundle, {outputs: destFiles})
-			.transform(babelify, {presets: ['es2015', 'stage-2']})
+			.plugin(factorBundle, { outputs: destFiles })
+			.transform(babelify, { presets: ['es2015', 'stage-2'] })
 			.bundle()
 			.pipe(createWriteStream(destCommon))
 			.on('finish', resolve)
@@ -157,7 +167,43 @@ async function scripts() {
 			});
 		})
 	);
-}
+}<% } else { %>/**
+ * # Scripts
+ *
+ *     foo.js ━┓
+ *             ┗━ browserify-incremental
+ *                ┗━ babelify
+ *                   ┗━ exorcist ━┓
+ *                                ┣━ foo.js
+ *                                ┗━ foo.js.map
+ */
+async function scripts() {
+	const { srcFiles, destFiles } = await find('src/assets/scripts/*.js');
+	const cacheFile = '.cache/browserify.json';
+	const destRoot = path.relative('dist/assets/scripts', '.');
+
+	await ensureFile(cacheFile);
+
+	await Promise.all(
+		srcFiles.map(async (src, i) => {
+			const dest = destFiles[i];
+
+			await ensureFile(dest);
+
+			return new Promise((resolve, reject) => {
+				browserify({ cacheFile, debug: true })
+					.add(src)
+					.plugin(errorify)
+					.transform(babelify, { presets: ['es2015', 'stage-2'] })
+					.bundle()
+					.pipe(exorcist(dest + '.map', null, destRoot))
+					.pipe(createWriteStream(dest))
+					.on('finish', resolve)
+					.on('error', reject);
+			});
+		})
+	);
+}<% } %>
 
 /**
  * # Graphics
@@ -180,7 +226,7 @@ async function graphics() {
 			const content = await readFile(src, 'utf8');
 			const svg = await new Promise(cb => svgo.optimize(content, cb));
 
-			sprites.add(id, svg.data);
+			return sprites.add(id, svg.data);
 		})
 	);
 
@@ -197,7 +243,7 @@ async function graphics() {
  *                        ┗━ bar.png
  */
 async function statics() {
-	const {srcFiles, destFiles} = await find([
+	const { srcFiles, destFiles } = await find([
 		'src/assets/fonts/**/*.*',
 		'src/assets/images/**/*.!(svg)'
 	]);
@@ -213,8 +259,7 @@ async function statics() {
  * Rebuilds everything from scratch.
  */
 async function build() {
-	console.log(chalk.green('Building files...'));
-	console.time(chalk.green('Build complete'));
+	const clock = timer(chalk.green(`build`));
 
 	await clean();
 
@@ -226,34 +271,61 @@ async function build() {
 		statics()
 	]);
 
-	console.timeEnd(chalk.green('Build complete'));
+	clock();
 }
 
 /**
- * # Watch
+ * # Development Server
  *
  * Serves files, watches for changes, rebuilds, and reloads.
  */
-async function watch() {
+async function dev() {
 	const browser = browserSync.create();
-	const rebuild = debounce(() => {
-		build().then(browser.reload, ygor.error);
-	});
 
-	browser
-		.init({server: ['dist', 'coverage']}, rebuild);
+	const initOptions = {
+		server: ['dist', 'coverage'],
+		open: false
+	};
 
-	browser
-		.watch('src', {ignored: /[\/\\]\./})
-		.on('raw', rebuild);
+	const watchOptions = {
+		ignored: /[\/\\]\./,
+		ignoreInitial: true
+	};
+
+	async function run(fn) {
+		const clock = timer(chalk.green(`${fn.name}`));
+
+		await fn()
+			.then(clock)
+			.then(browser.reload)
+			.catch(ygor.error);
+	}
+
+	async function watch(pattern, fn) {
+		browser.watch(
+			pattern,
+			watchOptions,
+			debounce(() => run(fn))
+		);
+	}
+
+	async function init() {
+		await build();
+
+		watch('src/**/*.{hbs,html}', markup);
+		watch('src/**/*.css', styles);
+		watch('src/**/*.js', scripts);
+	}
+
+	browser.init(initOptions, init);
 }
 
 ygor
-	.task('default', build)
 	.task('clean', clean)
 	.task('markup', markup)
 	.task('styles', styles)
 	.task('scripts', scripts)
 	.task('graphics', graphics)
 	.task('statics', statics)
-	.task('watch', watch);
+	.task('default', build)
+	.task('dev', dev);
