@@ -57,7 +57,7 @@ async function clean() {
  *                                     ┗━ bar.html
  */
 async function markup() {
-	const { srcFiles, destFiles } = await find('src/**/*.{hbs,html}');
+	const { srcFiles, destFiles } = await find('src/**/*.html');
 	const wax = handlebarsWax(handlebars.create(), { bustCache: true })
 		.helpers(handlebarsLayouts)
 		.partials('src/assets/partials/**/*.hbs');
