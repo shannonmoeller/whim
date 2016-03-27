@@ -36,13 +36,17 @@ A protean boilerplate generator based on my mercurial preferences.
   - svg4everybody
 - [document.registerElement](https://github.com/WebReflection/document-register-element)
 
-## Test
+## Contribute
+
+Standards for this project, including tests, code coverage, and semantics are enforced with a build tool. Pull requests must include passing tests with 100% code coverage and no linting errors.
+
+### Test
 
     $ npm test
 
 ----
 
-© 2015 Shannon Moeller <me@shannonmoeller.com>
+© Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
