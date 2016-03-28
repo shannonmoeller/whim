@@ -5,25 +5,13 @@
   "main": "src/index.js",
   "scripts": {
     "coveralls": "nyc report -r text-lcov | coveralls",
-    "pretest": "xo src/*.js test/*.js",
+    "pretest": "xo",
     "test": "nyc ava -v",
     "posttest": "nyc report -r lcov",
-    "watch": "chokidar '{src,test}/**/{*,.*}' -c 'npm test'"
+    "watch": "chokidar '{src,test}/**' -c 'npm test'"
   },
   "repository": "shannonmoeller/<%= slug %>",
-  "keywords": [
-    "concat",
-    "join",
-    "merge",
-    "pack",
-    "path",
-    "sprite",
-    "svg",
-    "svgs",
-    "<%= slug %>",
-    "symbol",
-    "symbols"
-  ],
+  "keywords": [],
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "license": "MIT",
   "bugs": {
@@ -32,7 +20,7 @@
   "homepage": "https://github.com/shannonmoeller/<%= slug %>",
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.12.0",
+    "ava": "^0.13.0",
     "chokidar-cli": "^1.2.0",
     "coveralls": "^2.11.6",
     "nyc": "^6.0.0",
@@ -42,9 +30,6 @@
     "node": ">= 0.12"
   },
   "xo": {
-    "env": [
-      "node"
-    ],
     "rules": {
       "brace-style": [
         2,

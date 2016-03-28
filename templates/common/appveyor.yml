@@ -1,3 +1,4 @@
+build: off
 environment:
   matrix:
     - nodejs_version: '5'
@@ -8,4 +9,3 @@ install:
   - npm install
 test_script:
   - npm test
-build: off

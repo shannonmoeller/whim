@@ -5,6 +5,8 @@
 import formSerialize from 'form-serialize';
 import morphdom from 'morphdom';
 
+const SELECTOR_FORM_FIELD = 'input, keygen, select, textarea';
+
 /**
  * Determines an event target based on a CSS selector.
  *
@@ -30,7 +32,7 @@ export function getTarget(element, event, selector) {
  * @return {Object}
  */
 export function getValues(element) {
-	const elements = element.querySelectorAll('input, keygen, select, textarea');
+	const elements = element.querySelectorAll(SELECTOR_FORM_FIELD);
 
 	return formSerialize({ elements }, {
 		disabled: true,
@@ -60,21 +62,23 @@ export function registerElement(tagName, parent, child) {
  * Set the innerHTML of an element with live DOM patching.
  *
  * @method setInnerHTML
- * @param {HTMLElement} fromElement
- * @param {HTMLElement|String} toElement
+ * @param {HTMLElement} element
+ * @param {String|HTMLElement|DocumentFragment} contents
  * @param {Object} options
  * @return {HTMLElement}
  */
-export function setInnerHTML(fromElement, toElement, options = {}) {
-	options.childrenOnly = true;
+export function setInnerHTML(element, contents, options = {}) {
+	const fragment = document.createElement('div');
 
-	if (typeof toElement === 'string') {
-		const fragment = document.createElement('div');
-
-		fragment.innerHTML = toElement;
-
-		toElement = fragment;
+	if (!contents || typeof contents === 'string') {
+		fragment.innerHTML = contents;
+	}
+	else {
+		fragment.appendChild(contents);
 	}
 
-	return morphdom(fromElement, toElement, options);
+	return morphdom(element, fragment, {
+		...options,
+		childrenOnly: true
+	});
 }
