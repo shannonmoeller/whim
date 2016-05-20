@@ -1,4 +1,4 @@
-<a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/5350f9c/logo.svg" alt="ygor" style="max-width:100%;height:1%;" /></a>
+<a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/5350f9c/logo.svg" alt="whim" style="max-width:100%;height:1%;" /></a>
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
