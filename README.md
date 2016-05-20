@@ -1,4 +1,4 @@
-<a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/5350f9c/logo.svg" alt="whim" style="max-width:100%;height:1%;" /></a>
+[![whim](https://cdn.rawgit.com/shannonmoeller/whim/5350f9c/logo.svg)](https://github.com/shannonmoeller/whim#readme)
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
@@ -7,6 +7,7 @@ A protean toolkit based on my mercurial preferences.
 ## Install
 
     $ npm install --global whim
+    $ npm install --save-dev whim
 
 ## Usage
 
@@ -14,14 +15,26 @@ A protean toolkit based on my mercurial preferences.
 
     Commands
 
-      init   Boilerplate generator.
-      lint   Code linter.
-      test   Code tester.
+      i, init   Boilerplate generator.
+      l, lint   Code linter.
+      t, test   Code tester.
 
     Options
 
       -h, --help      Display this help.
       -v, --version   Display version number.
+
+## API
+
+### test
+
+```js
+import { test } from 'whim';
+
+test('should do something', async t => {
+    t.pass();
+});
+```
 
 ## Contribute
 
