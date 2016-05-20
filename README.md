@@ -2,7 +2,7 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
-A protean boilerplate generator based on my mercurial preferences.
+A protean toolkit based on my mercurial preferences.
 
 ## Install
 
@@ -10,17 +10,18 @@ A protean boilerplate generator based on my mercurial preferences.
 
 ## Usage
 
-### Boilerplate
+    whim <command> [options]
 
-    $ whim init
+    Commands
 
-### Lint
+      init   Boilerplate generator.
+      lint   Code linter.
+      test   Code tester.
 
-    $ whim lint
+    Options
 
-### Test
-
-    $ whim test
+      -h, --help      Display this help.
+      -v, --version   Display version number.
 
 ## Contribute
 
