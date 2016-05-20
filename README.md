@@ -1,4 +1,4 @@
-<img src="https://cloud.githubusercontent.com/assets/155164/13732439/293121f0-e959-11e5-9aae-8ade3994058c.png" alt="whim" width="360" style="max-width:100%;height:1%;" />
+<a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/master/logo.svg" alt="ygor" style="max-width:100%;height:1%;" /></a>
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][amazon-img]][amazon-url]
 
@@ -10,31 +10,17 @@ A protean boilerplate generator based on my mercurial preferences.
 
 ## Usage
 
-### Module
+### Boilerplate
 
-    $ whim module
+    $ whim init
 
-### Website
+### Lint
 
-    $ whim website
+    $ whim lint
 
-## Flavors of the month
+### Test
 
-- [Ygor](https://github.com/shannonmoeller/ygor)
-- [Babel](https://babeljs.io)
-  - babel-preset-es2015
-  - babel-preset-stage-2
-- [PostCSS](https://github.com/postcss/postcss)
-  - postcss-import
-  - postcss-apply
-  - postcss-cssnext
-- [Handlebars](http://handlebarsjs.com)
-  - handlebars-wax
-  - handlebars-layouts
-- [SVG External Content](https://github.com/jonathantneal/svg4everybody)
-  - svgstore
-  - svg4everybody
-- [document.registerElement](https://github.com/WebReflection/document-register-element)
+    $ whim test
 
 ## Contribute
 

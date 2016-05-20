@@ -1,58 +1,38 @@
 {
   "name": "whim",
-  "version": "2.1.0",
-  "description": "A protean boilerplate generator based on my mercurial preferences.",
-  "bin": "index.js",
-  "main": false,
-  "scripts": {
-    "test": "xo index.js",
-    "watch": "chokidar '{*.js,templates/**/{*,.*}' -c 'npm test'"
-  },
-  "repository": "shannonmoeller/whim",
-  "keywords": [
-    "boilerplate",
-    "generator",
-    "module",
-    "website"
-  ],
-  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "version": "3.0.0",
+  "description": "A protean toolkit based on my mercurial preferences.",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shannonmoeller/whim/issues"
+  "repository": "shannonmoeller/whim",
+  "homepage": "https://github.com/shannonmoeller/whim#readme",
+  "author": {
+    "name": "Shannon Moeller",
+    "email": "me@shannonmoeller.com",
+    "url": "http://shannonmoeller.com"
   },
-  "homepage": "https://github.com/shannonmoeller/whim",
+  "main": "index.js",
+  "files": [
+    "*.js"
+  ],
   "dependencies": {
-    "gulp-template": "^3.1.0",
-    "inquirer": "^0.12.0",
-    "vinyl-fs": "^2.4.2",
-    "ygor": "^1.5.3"
+    "blue-tape": "^0.2.0",
+    "eslint": "^2.10.2",
+    "spiff": "^1.1.5",
+    "stylelint": "^6.5.0",
+    "ygor": "^1.7.0"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.0",
-    "xo": "^0.13.0"
+    "coveralls": "^2.11.9",
+    "esprev": "^1.1.0",
+    "nyc": "^6.4.4",
+    "tap-difflet": "^0.4.0"
+  },
+  "scripts": {
+    "coveralls": "nyc report -r text-lcov | coveralls",
+    "test": "nyc -r html -t text npm run test-node",
+    "test-node": "es ./node_modules/.bin/tape 'test/*.js' | tap-difflet"
   },
   "engines": {
-    "node": ">= 0.12"
-  },
-  "xo": {
-    "rules": {
-      "brace-style": [
-        2,
-        "stroustrup"
-      ],
-      "eqeqeq": [
-        2,
-        "allow-null"
-      ],
-      "no-eq-null": 0,
-      "object-curly-spacing": [
-        2,
-        "always"
-      ],
-      "babel/object-curly-spacing": [
-        2,
-        "always"
-      ]
-    }
+    "node": ">= 0.12.0"
   }
 }
