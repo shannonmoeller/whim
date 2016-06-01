@@ -15,9 +15,11 @@ A protean toolkit based on my mercurial preferences.
 
     Commands
 
-      i, init         Boilerplate generator.
-      l, lint         Code linter.
-      t, test         Code tester.
+      ls       List all commands.
+      init     Boilerplate generator.
+      lint     Code linter.
+      test     Code tester.
+      report   Submit coverage to coveralls.
 
     Options
 

@@ -13,27 +13,30 @@
   "bin": "lib/cli.js",
   "main": "lib/api.js",
   "files": [
-    "bin",
-    "lib",
-    "*.js"
+    "config",
+    "lib"
   ],
   "dependencies": {
+    "babel-eslint": "^6.0.4",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.9.0",
     "blue-tape": "^0.2.0",
+    "coveralls": "^2.11.9",
     "eslint": "^2.10.2",
+    "nyc": "^6.4.4",
+    "resolve-bin": "^0.4.0",
     "spiff": "^1.1.5",
     "stylelint": "^6.5.0",
+    "tap-diff": "^0.1.1",
     "ygor": "^1.7.0"
   },
-  "devDependencies": {
-    "coveralls": "^2.11.9",
-    "esprev": "^1.1.0",
-    "nyc": "^6.4.4",
-    "tap-difflet": "^0.4.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "coveralls": "nyc report -r text-lcov | coveralls",
-    "test": "nyc -r html -t text npm run test-node",
-    "test-node": "es ./node_modules/.bin/tape 'test/*.js' | tap-difflet"
+    "lint": "./lib/cli.js lint",
+    "report": "./lib/cli.js report",
+    "test": "./lib/cli.js test"
   },
   "engines": {
     "node": ">= 0.12.0"
