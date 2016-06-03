@@ -16,7 +16,7 @@ module.exports = {
 		 * Font family
 		 */
 
-		'font-family-name-quotes': 'single-where-recommended',
+		'font-family-name-quotes': 'always-where-recommended',
 
 		/**
 		 * Font weight
@@ -40,7 +40,7 @@ module.exports = {
 		'function-parentheses-newline-inside': 'always-multi-line',
 		'function-parentheses-space-inside': 'never-single-line',
 		// 'function-url-data-uris': null,
-		'function-url-quotes': 'single',
+		'function-url-quotes': 'always',
 		// 'function-whitelist': [],
 		'function-whitespace-after': 'always',
 
