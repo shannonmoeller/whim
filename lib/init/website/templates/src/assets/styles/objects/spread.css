@@ -1,0 +1,35 @@
+:root {
+	--spread: {
+		& {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+
+		&_top {
+			align-items: flex-start;
+		}
+
+		&_mid {
+			align-items: center;
+		}
+
+		&_btm {
+			align-items: flex-end;
+		}
+	};
+}
+
+.spread { @apply --spread; }
+
+@media (--small) {
+	.bp_s-spread { @apply --spread; }
+}
+
+@media (--medium) {
+	.bp_m-spread { @apply --spread; }
+}
+
+@media (--large) {
+	.bp_l-spread { @apply --spread; }
+}

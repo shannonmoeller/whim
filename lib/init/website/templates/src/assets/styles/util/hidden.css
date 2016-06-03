@@ -1,0 +1,41 @@
+:root {
+	--u-hidden: {
+		& {
+			display: none !important;
+		}
+	};
+
+	--u-visuallyHidden: {
+		& {
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			width: 1px !important;
+			height: 1px !important;
+			padding: 0 !important;
+			border: 0 !important;
+			margin: 0 !important;
+			clip: rect(1px 1px 1px 1px) !important;
+			clip: rect(1px, 1px, 1px, 1px) !important;
+			overflow: hidden !important;
+		}
+	};
+}
+
+.u-hidden { @apply --u-hidden; }
+.u-visuallyHidden { @apply --u-visuallyHidden; }
+
+@media (--small) {
+    .bpSm-u-hidden { @apply --u-hidden; }
+    .bpSm-u-visuallyHidden { @apply --u-visuallyHidden; }
+}
+
+@media (--medium) {
+    .bpMd-u-hidden { @apply --u-hidden; }
+    .bpMd-u-visuallyHidden { @apply --u-visuallyHidden; }
+}
+
+@media (--large) {
+    .bpLg-u-hidden { @apply --u-hidden; }
+    .bpLg-u-visuallyHidden { @apply --u-visuallyHidden; }
+}
