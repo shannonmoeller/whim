@@ -1,4 +1,4 @@
-[![whim](https://raw.githubusercontent.com/shannonmoeller/whim/a07f6833/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
+[![whim](https://cdn.rawgit.com/shannonmoeller/whim/a07f6833/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][tip-img]][tip-url]
 
