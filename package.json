@@ -10,30 +10,50 @@
     "email": "me@shannonmoeller.com",
     "url": "http://shannonmoeller.com"
   },
-  "bin": "lib/cli.js",
-  "main": "lib/api.js",
+  "bin": "bin/whim",
+  "main": false,
   "files": [
+    "*.js",
+    "bin",
     "config",
     "lib"
   ],
   "dependencies": {
     "babel-eslint": "^6.0.4",
+    "babelify": "^7.3.0",
     "blue-tape": "^0.2.0",
+    "browser-sync": "^2.12.10",
+    "browserify": "^13.0.1",
+    "browserify-incremental": "^3.1.1",
     "coveralls": "^2.11.9",
-    "eslint": "^2.10.2",
+    "cssnano": "^3.6.2",
+    "errorify": "^0.3.1",
+    "eslint": "^2.11.1",
     "esprev": "^3.1.0",
+    "front-matter": "^2.0.8",
+    "handlebars": "^4.0.5",
+    "handlebars-layouts": "^3.1.3",
+    "handlebars-wax": "^4.0.0",
     "inquirer": "^1.0.3",
+    "look-up": "^0.8.3",
     "nyc": "^6.4.4",
+    "parent-module": "^0.1.0",
+    "postcss": "^5.0.21",
+    "postcss-apply": "^0.2.0",
+    "postcss-cssnext": "^2.6.0",
+    "postcss-import": "^8.1.2",
+    "postcss-url": "^5.1.2",
     "spiff": "^2.0.1",
-    "stylelint": "^6.5.0",
+    "stylelint": "^6.5.1",
+    "svgstore": "^1.0.0",
     "tap-diff": "^0.1.1",
+    "update-notifier": "^0.7.0",
     "ygor": "^1.7.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "lint": "./lib/cli.js lint",
-    "report": "./lib/cli.js report",
-    "test": "./lib/cli.js test"
+    "lint": "./bin/whim lint",
+    "report": "./bin/whim test report",
+    "test": "./bin/whim test"
   },
   "engines": {
     "node": ">= 0.12.0"
