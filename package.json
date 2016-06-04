@@ -16,7 +16,7 @@
     "*.js",
     "bin",
     "config",
-    "lib"
+    "src"
   ],
   "dependencies": {
     "babel-eslint": "^6.0.4",

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 require('../register');
-require('../lib');
+require('../src');

@@ -1,5 +1,5 @@
 /**
- * # Lib
+ * # Whim
  */
 
 import ygor from 'ygor';
