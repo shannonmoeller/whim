@@ -52,11 +52,10 @@
     "svgstore": "^1.0.0",
     "tap-diff": "^0.1.1",
     "update-notifier": "^0.7.0",
-    "ygor": "^2.0.0"
+    "ygor": "^2.1.0"
   },
   "scripts": {
-    "lint": "./bin/whim lint",
-    "report": "./bin/whim test report",
+    "pretest": "./bin/whim lint",
     "test": "./bin/whim test"
   },
   "engines": {

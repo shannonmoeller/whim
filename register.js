@@ -11,7 +11,6 @@ var plugins = [
 
 require('babel-polyfill');
 require('babel-register')({
-	only: /src|test|whim/,
 	ignore: /node_modules\/(?!whim)/,
 	presets: presets,
 	plugins: plugins,
