@@ -1,8 +1,8 @@
-[![whim](https://cdn.rawgit.com/shannonmoeller/whim/5350f9c/logo.svg)](https://github.com/shannonmoeller/whim#readme)
+[![whim](https://raw.githubusercontent.com/shannonmoeller/whim/a07f6833/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][tip-img]][tip-url]
 
-A protean toolkit based on my mercurial preferences.
+A protean toolkit based on my mercurial preferences. Read the code for details.
 
 ## Install
 
@@ -15,11 +15,10 @@ A protean toolkit based on my mercurial preferences.
 
     Commands
 
-      ls       List all commands.
       init     Boilerplate generator.
       lint     Code linter.
+      make     Build tools.
       test     Code tester.
-      report   Submit coverage to coveralls.
 
     Options
 
@@ -28,10 +27,20 @@ A protean toolkit based on my mercurial preferences.
 
 ## API
 
-### test
+### register
+
+Registers Babel as a require hook with intelligent presets.
 
 ```js
-import { test } from 'whim';
+require('whim/register');
+```
+
+### test
+
+Testing API.
+
+```js
+import test from 'whim/test';
 
 test('should do something', async t => {
     t.pass();
