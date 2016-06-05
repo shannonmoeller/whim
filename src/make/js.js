@@ -16,7 +16,7 @@ import { read, write } from 'spiff';
 
 import browserify from 'browserify-incremental';
 
-export default async function scripts(options = {}) {
+export default async function js(options = {}) {
 	const maps = options.m || options.maps;
 
 	async function transpile(fileObj) {

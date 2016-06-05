@@ -13,7 +13,7 @@ import { file, read, write } from 'spiff';
 import Svgo from 'svgo';
 import svgstore from 'svgstore';
 
-export default async function sprites() {
+export default async function svg() {
 	const svgo = new Svgo();
 
 	async function concatSprites(store, fileObj) {

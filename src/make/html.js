@@ -16,7 +16,7 @@ import handlebarsLayouts from 'handlebars-layouts';
 import handlebarsWax from 'handlebars-wax';
 import frontMatter from 'front-matter';
 
-export default async function markup() {
+export default async function html() {
 	const hb = handlebars.create();
 	const waxOptions = {
 		bustCache: true,
