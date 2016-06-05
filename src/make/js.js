@@ -23,7 +23,17 @@ export default async function js(options = {}) {
 		const results = [];
 		const bundler = browserify(fileObj.path, {
 			plugin: ['errorify'],
-			transform: ['babelify'],
+			transform: [
+				['babelify', {
+					presets: [
+						'es2015',
+						'stage-2',
+					],
+					plugins: [
+						'add-module-exports',
+					],
+				}],
+			],
 			debug: maps,
 		});
 
