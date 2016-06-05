@@ -27,7 +27,7 @@ export default async function sprites() {
 
 	function createSpriteSheet(store) {
 		return file({
-			path: 'assets/sprites/sheet.svg',
+			path: 'assets/svg/sprites.svg',
 			contents: store.toString(),
 		});
 	}
