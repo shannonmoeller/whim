@@ -15,10 +15,10 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
 
     Commands
 
-      init     Boilerplate generator.
-      lint     Code linter.
-      make     Build tools.
-      test     Code tester.
+      init   Boilerplate generator.
+      lint   Code linter.
+      make   Code builder.
+      test   Code tester.
 
     Options
 

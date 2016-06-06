@@ -2,15 +2,32 @@
  * # Init Common
  */
 
-import inquirer from 'inquirer';
+import fs from 'fs';
 import path from 'path';
+import inquirer from 'inquirer';
+import { read, write } from 'spiff';
+import { render } from '../../util';
+
+const safetyQuestions = [
+	{
+		type: 'confirm',
+		name: 'nonEmptyOkay',
+		message: 'Running in a non-empty directory. Continue?',
+		default: false,
+		when() {
+			return fs
+				.readdirSync(process.cwd())
+				.length > 0;
+		},
+	},
+];
 
 const questions = [
 	{
 		type: 'input',
-		name: 'name',
+		name: 'slug',
 		message: 'package name',
-		default: () => {
+		default() {
 			return path
 				.basename(process.cwd())
 				.toLowerCase()
@@ -65,13 +82,27 @@ const questions = [
 	},
 ];
 
-function generate(answers) {
-	console.log('common', answers);
+async function generate(answers) {
+	const cwd = __dirname;
+	const dest = process.cwd();
+
+	await read('./templates/**/{,*}.*', { cwd })
+		.mapProp('contents', x => render(x, answers))
+		.map(write(dest));
+
 	return answers;
 }
 
-export default function initCommon() {
-	return inquirer
-		.prompt(questions)
-		.then(generate);
+export default async function initCommon() {
+	const safetyAnswers = await inquirer
+		.prompt(safetyQuestions);
+
+	if (safetyAnswers.nonEmptyOkay === false) {
+		process.exit();
+	}
+
+	const answers = await inquirer
+		.prompt(questions);
+
+	return generate(answers);
 }

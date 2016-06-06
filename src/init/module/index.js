@@ -4,12 +4,14 @@
 
 import inquirer from 'inquirer';
 import initCommon from '../common';
+import { read, write } from 'spiff';
+import { render } from '../../util';
 
 const questions = [
 	{
 		type: 'confirm',
-		name: 'futureful',
-		message: 'futureful',
+		name: 'esnext',
+		message: 'esnext',
 		default: true,
 	},
 	{
@@ -20,18 +22,24 @@ const questions = [
 	},
 ];
 
-function generate(answers) {
-	console.log('module', answers);
+async function generate(answers) {
+	const cwd = __dirname;
+	const dest = process.cwd();
+
+	await read('./templates/**/{,*}.*', { cwd })
+		.mapProp('contents', x => render(x, answers))
+		.map(write(dest));
+
 	return answers;
 }
 
 export default async function initModule() {
 	const commonAnswers = await initCommon();
+	const answers = await inquirer
+		.prompt(questions);
 
-	return inquirer
-		.prompt(questions)
-		.then(answers => generate({
-			...commonAnswers,
-			...answers,
-		}));
+	return generate({
+		...commonAnswers,
+		...answers,
+	});
 }

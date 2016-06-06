@@ -4,6 +4,7 @@
 
 import lookUp from 'look-up';
 import parentModule from 'parent-module';
+import compileTemplate from 'lodash.template';
 import path from 'path';
 
 export function chdirRoot() {
@@ -60,4 +61,8 @@ export function normalizeGlobs(globs, inclusionGlobs, exclusionGlobs) {
 	localGlobs.push(...exclusionGlobs);
 
 	return localGlobs;
+}
+
+export function render(str, obj) {
+	return compileTemplate(str)(obj);
 }

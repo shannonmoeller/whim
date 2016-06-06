@@ -4,6 +4,8 @@
 
 import inquirer from 'inquirer';
 import initCommon from '../common';
+import { read, write } from 'spiff';
+import { render } from '../../util';
 
 const questions = [
 	{
@@ -20,18 +22,24 @@ const questions = [
 	},
 ];
 
-function generate(answers) {
-	console.log('website', answers);
+async function generate(answers) {
+	const cwd = __dirname;
+	const dest = process.cwd();
+
+	await read('./templates/**/{,*}.*', { cwd })
+		.mapProp('contents', x => render(x, answers))
+		.map(write(dest));
+
 	return answers;
 }
 
 export default async function initWebsite() {
 	const commonAnswers = await initCommon();
+	const answers = await inquirer
+		.prompt(questions);
 
-	return inquirer
-		.prompt(questions)
-		.then(answers => generate({
-			...commonAnswers,
-			...answers,
-		}));
+	return generate({
+		...commonAnswers,
+		...answers,
+	});
 }
