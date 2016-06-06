@@ -18,7 +18,7 @@ const jsGlobs = [
 	'!**/vendor/**',
 ];
 
-export default function js(options = {}) {
+export default function js(options) {
 	const jsLint = new CLIEngine({ baseConfig: jsConfig });
 	const jsLegacyLint = new CLIEngine({ baseConfig: jsLegacyConfig });
 	const jsLegacyRx = /^\s*(['"]use strict['"]|#!)/m;

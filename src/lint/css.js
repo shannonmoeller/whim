@@ -18,7 +18,7 @@ const cssGlobs = [
 	'!**/vendor/**',
 ];
 
-export default function css(options = {}) {
+export default function css(options) {
 	const globs = normalizeGlobs(options._, cssGlobs, exclusionGlobs);
 
 	return read(globs)

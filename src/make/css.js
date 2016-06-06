@@ -25,7 +25,7 @@ import postcssNano from 'cssnano';
 import postcssNext from 'postcss-cssnext';
 import postcssUrl from 'postcss-url';
 
-export default async function css(options = {}) {
+export default async function css(options) {
 	const maps = options.m || options.maps;
 	const bundler = postcss([
 		postcssImport({

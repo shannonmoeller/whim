@@ -39,11 +39,7 @@ export function lazyLoad(mod) {
 		const modpath = require.resolve(filepath);
 		const val = require(modpath);
 
-		if (!val || typeof val.then === 'function') {
-			return val;
-		}
-
-		if (typeof val === 'function') {
+		if (val && !val.then && typeof val === 'function') {
 			return val(...args);
 		}
 

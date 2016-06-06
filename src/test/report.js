@@ -4,7 +4,7 @@
 
 import { spawnSync } from 'child_process';
 
-export default async function report(options = {}) {
+export default async function report(options) {
 	const coverallsBin = require.resolve('.bin/coveralls');
 	const nycBin = require.resolve('.bin/nyc');
 

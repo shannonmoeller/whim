@@ -35,6 +35,7 @@ export default async function server(options, ygor) {
 		ui: false,
 		open: false,
 		notify: false,
+		port: options.port,
 		server: './dist',
 	});
 

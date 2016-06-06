@@ -5,10 +5,12 @@
 import ygor from 'ygor';
 import { chdirRoot, lazyLoad } from '../util';
 
-chdirRoot();
+export default function test() {
+	chdirRoot();
 
-export default ygor()
-	.task('default', lazyLoad('./all'))
-	.task('browser', lazyLoad('./browser'))
-	.task('node', lazyLoad('./node'))
-	.task('report', lazyLoad('./report'));
+	return ygor()
+		.task('default', lazyLoad('./all'))
+		.task('browser', lazyLoad('./browser'))
+		.task('node', lazyLoad('./node'))
+		.task('report', lazyLoad('./report'));
+}

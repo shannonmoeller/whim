@@ -9,7 +9,7 @@ import js from './js';
 import svg from './svg';
 import statics from './statics';
 
-export default async function all(options = {}) {
+export default async function all(options) {
 	await clean(options);
 
 	await Promise.all([

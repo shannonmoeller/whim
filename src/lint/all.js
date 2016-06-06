@@ -5,7 +5,7 @@
 import css from './css';
 import js from './js';
 
-export default function all(options = {}) {
+export default function all(options) {
 	return Promise.all([
 		css({
 			...options,
