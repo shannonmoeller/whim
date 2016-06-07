@@ -11,19 +11,50 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
 
 ## Usage
 
-    whim <command> [options]
+```
+  whim [options]
 
-    Commands
+  Options
 
-      init   Boilerplate generator.
-      lint   Code linter.
-      make   Code builder.
-      test   Code tester.
+    -h, --help       Display this help.
+    -v, --version    Display version number.
 
-    Options
+  ───
 
-      -h, --help      Display this help.
-      -v, --version   Display version number.
+  whim <task> [subtask] [options]
+
+  Tasks
+
+    init             Code generator.
+    ├─ module
+    └─ website
+
+    lint             Code linter.
+    ├─ all (default)
+    ├─ css
+    └─ js
+
+    make             Code builder.
+    ├─ all (default)
+    ├─ clean
+    ├─ css
+    ├─ html
+    ├─ js
+    ├─ server
+    ├─ statics
+    └─ svg
+
+    test             Code tester.
+    ├─ all (default)
+    ├─ browser
+    ├─ node
+    └─ report
+
+  Options
+
+    -h, --help       Display task help.
+    -v, --verbose    Display runtime info.
+```
 
 ## API
 

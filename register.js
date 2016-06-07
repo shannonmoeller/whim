@@ -1,12 +1,12 @@
 'use strict';
 
 var presets = [
-    require.resolve('babel-preset-es2015'),
-    require.resolve('babel-preset-stage-2'),
+	require.resolve('babel-preset-es2015'),
+	require.resolve('babel-preset-stage-2'),
 ];
 
 var plugins = [
-    require.resolve('babel-plugin-add-module-exports'),
+	require.resolve('babel-plugin-add-module-exports'),
 ];
 
 require('babel-polyfill');

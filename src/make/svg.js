@@ -14,15 +14,15 @@ import Svgo from 'svgo';
 import svgstore from 'svgstore';
 
 export default async function svg() {
-	const svgo = new Svgo();
+	const optimizer = new Svgo();
 
 	async function concatSprites(store, fileObj) {
-		const svg = await new Promise(cb =>
-			svgo.optimize(fileObj.contents, cb)
+		const svgObj = await new Promise(cb =>
+			optimizer.optimize(fileObj.contents, cb)
 		);
 
 		return store
-			.add(fileObj.stem, svg.data);
+			.add(fileObj.stem, svgObj.data);
 	}
 
 	function createSpriteSheet(store) {

@@ -148,8 +148,8 @@ module.exports = {
 		'no-mixed-requires': [1, { grouping: true, allowCall: true }],
 		'no-new-require': 1,
 		'no-path-concat': 1,
-		'no-process-env': 1,
-		'no-process-exit': 1,
+		'no-process-env': 0,
+		'no-process-exit': 0,
 		'no-restricted-modules': 0,
 		'no-sync': 0,
 

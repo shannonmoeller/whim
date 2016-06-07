@@ -9,11 +9,11 @@ export default function all(options) {
 	return Promise.all([
 		css({
 			...options,
-			_: options.css || []
+			_: options.css || [],
 		}),
 		js({
 			...options,
-			_: options.js || []
+			_: options.js || [],
 		}),
 	]);
 }

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 
+var ygor = require('ygor');
+
 require('../register');
-require('../src')();
+require('../src')(ygor.cli);

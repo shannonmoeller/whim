@@ -39,7 +39,7 @@ export function lazyLoad(mod) {
 		const modpath = require.resolve(filepath);
 		const val = require(modpath);
 
-		if (val && !val.then && typeof val === 'function') {
+		if (typeof val === 'function') {
 			return val(...args);
 		}
 
@@ -61,4 +61,26 @@ export function normalizeGlobs(globs, inclusionGlobs, exclusionGlobs) {
 
 export function render(str, obj) {
 	return compileTemplate(str)(obj);
+}
+
+export function showUsage(cli, usage) {
+	if (cli._.length) {
+		return;
+	}
+
+	if (cli.h || cli.help) {
+		console.log(usage);
+		process.exit(0);
+	}
+}
+
+export function showVersion(cli) {
+	if (cli._.length) {
+		return;
+	}
+
+	if (cli.v || cli.version) {
+		console.log(require('../package.json').version);
+		process.exit(0);
+	}
 }
