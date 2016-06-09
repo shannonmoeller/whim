@@ -40,6 +40,7 @@
     "handlebars-layouts": "^3.1.3",
     "handlebars-wax": "^4.0.0",
     "inquirer": "^1.0.3",
+    "lodash.template": "^4.2.5",
     "look-up": "^0.8.3",
     "nyc": "^6.4.4",
     "parent-module": "^0.1.0",
