@@ -27,7 +27,7 @@
     "babel-register": "^6.9.0",
     "babelify": "^7.3.0",
     "blue-tape": "^0.2.0",
-    "browser-sync": "^2.12.12",
+    "browser-sync": "^2.13.0",
     "browserify": "^13.0.1",
     "browserify-incremental": "^3.1.1",
     "coveralls": "^2.11.9",
@@ -48,12 +48,12 @@
     "postcss-cssnext": "^2.6.0",
     "postcss-import": "^8.1.2",
     "postcss-url": "^5.1.2",
-    "spiff": "^2.0.4",
+    "spiff": "^2.0.12",
     "stylelint": "^6.5.1",
     "svgstore": "^1.0.0",
     "tap-diff": "^0.1.1",
     "uglifyify": "^3.0.1",
-    "ygor": "^2.2.1"
+    "ygor": "^2.2.3"
   },
   "scripts": {
     "pretest": "./bin/whim lint",
