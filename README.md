@@ -16,16 +16,16 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
 
   Tasks
 
-    init             Code generator.
+    init               Code generator.
     ├─ module
     └─ website
 
-    lint             Code linter.
+    lint               Code linter.
     ├─ all (default)
     ├─ css
     └─ js
 
-    make             Code builder.
+    make               Code builder.
     ├─ all (default)
     ├─ clean
     ├─ css
@@ -35,7 +35,7 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
     ├─ statics
     └─ svg
 
-    test             Code tester.
+    test               Code tester.
     ├─ all (default)
     ├─ browser
     ├─ node
@@ -43,8 +43,8 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
 
   Options
 
-    -h, --help       Display task help.
-    -v, --verbose    Display runtime info.
+    -h, --help         Display task help.
+    -v, --verbose      Display runtime info.
 ```
 
 ### Recommended Usage
@@ -57,7 +57,7 @@ The recommended way to use `whim` is to set a specific version number and invoke
   ...
 
   "devDependencies": {
-    "whim": "3.0.1"
+    "whim": "4.0.0"
   },
   "scripts": {
     "start": "whim make",
