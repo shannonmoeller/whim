@@ -49,12 +49,12 @@
     "postcss-cssnext": "^2.6.0",
     "postcss-import": "^8.1.2",
     "postcss-url": "^5.1.2",
-    "spiff": "^2.0.12",
+    "spiff": "^2.0.13",
     "stylelint": "^6.5.1",
     "svgstore": "^1.0.0",
     "tap-diff": "^0.1.1",
     "uglifyify": "^3.0.1",
-    "ygor": "^2.2.3"
+    "ygor": "^2.2.4"
   },
   "scripts": {
     "pretest": "./bin/whim lint",
