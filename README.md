@@ -12,15 +12,6 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
 ## Usage
 
 ```
-  whim [options]
-
-  Options
-
-    -h, --help       Display this help.
-    -v, --version    Display version number.
-
-  ───
-
   whim <task> [subtask] [options]
 
   Tasks
@@ -56,22 +47,48 @@ A protean toolkit based on my mercurial preferences. Read the code for details.
     -v, --verbose    Display runtime info.
 ```
 
-## API
+### Recommended Usage
 
-### register
-
-Registers Babel as a require hook with intelligent presets.
+The recommended way to use `whim` is to set a specific version number and invoke `whim` via `npm run`. By using an exact version number for a locally installed copy of `whim` you ensure that its constantly-changing nature doesn't bite you. Using a global install will very likely not work long term.
 
 ```js
-require('whim/register');
+// package.json
+{
+  ...
+
+  "devDependencies": {
+    "whim": "3.0.1"
+  },
+  "scripts": {
+    "start": "whim make",
+    "pretest": "whim lint",
+    "test": "whim test",
+    "report": "whim test report"
+  },
+
+  ...
+}
 ```
+
+Then:
+
+    $ npm start server -- -mv
+    # runs `whim make server -mv`
+
+    $ npm test
+    # runs `whim lint && whim test`
+
+    $ npm run report
+    # runs `whim test report`
+
+## API
 
 ### test
 
 Testing API.
 
 ```js
-import test from 'whim/test';
+import test from 'whim/lib/test';
 
 test('should do something', async t => {
     t.pass();

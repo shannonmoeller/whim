@@ -1,6 +1,6 @@
 {
   "name": "whim",
-  "version": "3.0.11",
+  "version": "4.0.0",
   "description": "A protean toolkit based on my mercurial preferences.",
   "license": "MIT",
   "repository": "shannonmoeller/whim",
@@ -11,11 +11,11 @@
     "url": "http://shannonmoeller.com"
   },
   "bin": "bin/whim",
-  "main": false,
+  "main": "lib/index.js",
   "files": [
-    "*.js",
     "bin",
     "config",
+    "lib",
     "src"
   ],
   "dependencies": {
@@ -58,7 +58,8 @@
   },
   "scripts": {
     "pretest": "./bin/whim lint",
-    "test": "./bin/whim test"
+    "test": "./bin/whim test",
+    "report": "whim test report"
   },
   "engines": {
     "node": ">= 0.12.0"

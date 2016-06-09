@@ -2,5 +2,5 @@
 
 var ygor = require('ygor');
 
-require('../register');
+require('../lib/register')();
 require('../src')(ygor.cli);
