@@ -47,7 +47,7 @@ export function lazyLoad(mod) {
 	};
 }
 
-export function normalizeGlobs(globs, inclusionGlobs, exclusionGlobs) {
+export function normalizeGlobs(globs, inclusionGlobs = [], exclusionGlobs = []) {
 	const localGlobs = [].concat(globs || []);
 
 	if (!localGlobs.length) {

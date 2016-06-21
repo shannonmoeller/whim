@@ -1,30 +1,25 @@
 ---
-title: Home
-styles:
-  - /assets/styles/home.css
-scripts:
-  - /assets/scripts/home.js
+title:
+canonical: /
 ---
-{{#extend "layout"}}
+{{#extend "layouts/main"}}
 	{{#content "body"}}
-		<my-home>
-			<div class="bp_m-grid bp_l-grid bp_l-m-grid_ctr">
-				<div class="bp_m-grid-col_1fo4 bp_l-grid-col_1of3">
-					<div class="aspect aspect_block">
-						<svg class="aspect-bd" role="presentation">
-							<use xlink:href="/assets/images/sprites.svg#ghost" />
-						</svg>
-					</div>
-				</div>
-
-				<div class="bp_m-grid-col_1fo4 bp_l-grid-col_1of3">
-					<div class="aspect aspect_block">
-						<svg class="aspect-bd" role="presentation">
-							<use xlink:href="/assets/images/sprites.svg#taco" />
-						</svg>
-					</div>
+		<div class="bpMd-grid bpLg-grid bpLg-m-grid_ctr">
+			<div class="bpMd-grid-col_1fo4 bpLg-grid-col_1of3">
+				<div class="aspect aspect_block">
+					<svg class="aspect-bd" role="presentation">
+						<use xlink:href="/assets/images/sprites.svg#ghost" />
+					</svg>
 				</div>
 			</div>
-		</my-home>
+
+			<div class="bpMd-grid-col_1fo4 bpLg-grid-col_1of3">
+				<div class="aspect aspect_block">
+					<svg class="aspect-bd" role="presentation">
+						<use xlink:href="/assets/images/sprites.svg#taco" />
+					</svg>
+				</div>
+			</div>
+		</div>
 	{{/content}}
 {{/extend}}

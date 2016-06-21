@@ -14,12 +14,6 @@ const questions = [
 		message: 'esnext',
 		default: true,
 	},
-	{
-		type: 'confirm',
-		name: 'umd',
-		message: 'umd',
-		default: true,
-	},
 ];
 
 async function generate(answers) {

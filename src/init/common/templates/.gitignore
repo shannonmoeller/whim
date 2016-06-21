@@ -1,11 +1,9 @@
 .cache/
-.idea*
 .nyc_output/
 coverage/
 dist/
 node_modules/
 
 *.log
-*.iws
 *.swp
 .npmignore

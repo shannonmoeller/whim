@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
 import { read, write } from 'spiff';
+import config from '../../../config/whim';
 import { render } from '../../util';
 
 const safetyQuestions = [
@@ -78,7 +79,7 @@ const questions = [
 		type: 'input',
 		name: 'authorUrl',
 		message: 'author url',
-		default: 'shannonmoeller.com',
+		default: 'http://shannonmoeller.com',
 	},
 ];
 
@@ -104,5 +105,8 @@ export default async function initCommon() {
 	const answers = await inquirer
 		.prompt(questions);
 
-	return generate(answers);
+	return generate({
+		...config,
+		...answers
+	});
 }

@@ -1,57 +1,32 @@
 {
   "name": "<%= slug %>",
-  "version": "1.0.0",
+  "version": "<%= version %>",
   "description": "<%= description %>",
-  "main": "src/index.js",
-  "scripts": {
-    "coveralls": "nyc report -r text-lcov | coveralls",
-    "pretest": "xo",
-    "test": "nyc ava -v",
-    "posttest": "nyc report -r lcov",
-    "watch": "chokidar '{src,test}/**' -c 'npm test'"
-  },
-  "repository": "shannonmoeller/<%= slug %>",
   "keywords": [],
-  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shannonmoeller/<%= slug %>/issues"
+  "repository": "<%= repoUser %>/<%= slug %>",
+  "homepage": "https://<%= repoHost %>.com/<%= repoUser %>/<%= slug %>#readme",
+  "author": {
+    "name": "<%= authorName %>",
+    "email": "<%= authorEmail %>",
+    "url": "<%= authorUrl %>"
   },
-  "homepage": "https://github.com/shannonmoeller/<%= slug %>",
+  "main": "src/index.js",
+  "files": [
+    "*.js",
+    "dist"
+  ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.13.0",
-    "chokidar-cli": "^1.2.0",
-    "coveralls": "^2.11.6",
-    "nyc": "^6.0.0",
-    "xo": "^0.13.0"
+    "<%= pkg.name %>": "^<%= pkg.version %>"
+  },
+  "scripts": {
+    "start": "<%= pkg.name %> make",
+    "pretest": "<%= pkg.name %> lint",
+    "test": "<%= pkg.name %> test",
+    "report": "<%= pkg.name %> test report"
   },
   "engines": {
-    "node": ">= 0.12"
-  },
-  "xo": {
-    "rules": {
-      "brace-style": [
-        2,
-        "stroustrup"
-      ],
-      "eqeqeq": [
-        2,
-        "allow-null"
-      ],
-      "no-eq-null": 0,
-      "object-curly-spacing": [
-        2,
-        "always"
-      ],
-      "operator-linebreak": [
-        2,
-        "before"
-      ],
-      "babel/object-curly-spacing": [
-        2,
-        "always"
-      ]
-    }
+    "node": "<%= pkg.engines.node %>"
   }
 }

@@ -1,0 +1,27 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+*:unresolved {
+	visibility: hidden;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	font-family: sans-serif;
+	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+	font: 300 16rem/1.6 sans-serif;
+}

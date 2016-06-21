@@ -1,0 +1,36 @@
+/**
+ * Breakpoints have been setup to allow greater specificity as the viewport
+ * changes in size.
+ *
+ *     |---------------(all)----------------|
+ *     |--(small)--|
+ *                 |--(medium)--|
+ *                              |--(large)--|
+ *
+ *     .foo {
+ *         background-color: red;
+ *     }
+ *
+ *     @media (--small) {
+ *         .foo {
+ *             background-color: yellow;
+ *         }
+ *     }
+ *
+ *     @media (--medium) {
+ *         .foo {
+ *             background-color: green;
+ *         }
+ *     }
+ *
+ *     @media (--large) {
+ *         .foo {
+ *             background-color: blue;
+ *         }
+ *     }
+ *
+ */
+
+@custom-media --small (width < 640px);
+@custom-media --medium (width >= 640px) and (width <= 960px);
+@custom-media --large (width > 960px);

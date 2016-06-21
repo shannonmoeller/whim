@@ -2,6 +2,7 @@
   "name": "whim",
   "version": "4.0.0",
   "description": "A protean toolkit based on my mercurial preferences.",
+  "keywords": [],
   "license": "MIT",
   "repository": "shannonmoeller/whim",
   "homepage": "https://github.com/shannonmoeller/whim#readme",
@@ -57,9 +58,10 @@
     "ygor": "^2.2.4"
   },
   "scripts": {
+    "start": "./bin/whim make",
     "pretest": "./bin/whim lint",
     "test": "./bin/whim test",
-    "report": "whim test report"
+    "report": "./bin/whim test report"
   },
   "engines": {
     "node": ">= 0.12.0"

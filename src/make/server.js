@@ -7,9 +7,14 @@
  */
 
 import browserSync from 'browser-sync';
-import { debounce } from '../util';
+import { debounce, normalizeGlobs } from '../util';
+
+const serverGlobs = [
+	'dist',
+];
 
 export default async function server(options, ygor) {
+	const globs = normalizeGlobs(options._, serverGlobs);
 	const browser = browserSync.create();
 	const reload = debounce(browser.reload);
 	const watchOptions = {
@@ -35,13 +40,13 @@ export default async function server(options, ygor) {
 		ui: false,
 		open: false,
 		notify: false,
-		port: options.port,
-		server: './dist',
+		server: globs,
+		...options,
 	});
 
 	watch(`src/**/*.{hbs,html}`, 'html');
 	watch(`src/**/*.css`, 'css');
 	watch(`src/**/*.js`, 'js');
 
-	return run('default');
+	await run('default');
 }

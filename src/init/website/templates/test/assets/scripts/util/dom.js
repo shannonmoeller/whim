@@ -1,14 +1,18 @@
-import test from 'ava';
-import { getTarget, innerHTML, register } from '../../../../src/assets/scripts/util/dom';
+import test from 'whim/src/test';
+import {
+	getTarget,
+	getValues,
+	setInnerHTML
+} from '../../../../src/assets/scripts/util/dom';
 
 test('getTarget', async assert => {
-	assert.is(typeof getTarget, 'function');
+	assert.equal(typeof getTarget, 'function');
 });
 
-test('innerHTML', async assert => {
-	assert.is(typeof innerHTML, 'function');
+test('getValues', async assert => {
+	assert.equal(typeof getValues, 'function');
 });
 
-test('register', async assert => {
-	assert.is(typeof register, 'function');
+test('setInnerHTML', async assert => {
+	assert.equal(typeof setInnerHTML, 'function');
 });

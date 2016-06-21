@@ -24,4 +24,7 @@ export default async function all(options) {
 	spawnSync(nycBin, ['report', '-r', 'text'], {
 		stdio: [null, 1, 2],
 	});
+
+	// propagate exit code for ci
+	process.exit(nyc.status);
 }
