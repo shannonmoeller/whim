@@ -48,10 +48,10 @@ module.exports = {
 		 * Number
 		 */
 
+		'length-zero-no-unit': true,
 		'number-leading-zero': 'always',
 		'number-max-precision': 4,
 		'number-no-trailing-zeros': true,
-		'number-zero-length-no-unit': true,
 
 		/**
 		 * String
@@ -84,7 +84,7 @@ module.exports = {
 
 		// Custom property
 		// 'custom-property-no-outside-root': null,
-		'custom-property-pattern': /[A-Z]([A-Z0-9_-]*[A-Z0-9])?/,
+		'custom-property-pattern': /[a-z]([a-z0-9_-]*[a-z0-9])?/,
 
 		// Shorthand property
 
@@ -181,7 +181,7 @@ module.exports = {
 		'media-feature-range-operator-space-before': 'always',
 
 		// Custom media
-		'custom-media-pattern': /[A-Z]([A-Z0-9_-]*[A-Z0-9])?/,
+		'custom-media-pattern': /[a-z]([a-z0-9_-]*[a-z0-9])?/,
 
 		// Media query
 		'media-query-parentheses-space-inside': 'never',
@@ -193,13 +193,18 @@ module.exports = {
 		'media-query-list-comma-space-before': 'never',
 
 		// At rule
-		'at-rule-empty-line-before': ['always', { except: ['blockless-group', 'first-nested'] }],
+		'at-rule-empty-line-before': ['always', {
+			except: ['blockless-group', 'first-nested'],
+		}],
 		'at-rule-name-case': 'lower',
 		// 'at-rule-no-vendor-prefix': null,
 		'at-rule-semicolon-newline-after': 'always',
 
 		// Comment
-		'comment-empty-line-before': 'always',
+		'comment-empty-line-before': ['always', {
+			except: ['first-nested'],
+			ignore: ['between-comments', 'stylelint-commands'],
+		}],
 		'comment-whitespace-inside': 'always',
 
 		// disabled because it throws

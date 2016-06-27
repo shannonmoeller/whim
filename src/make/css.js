@@ -28,11 +28,8 @@ import postcssUrl from 'postcss-url';
 export default async function css(options) {
 	const maps = options.m || options.maps;
 	const bundler = postcss([
-		postcssImport({
-			path: 'src',
-		}),
+		postcssImport(),
 		postcssApply(),
-		postcssUrl(),
 		postcssNext({
 			warnForDuplicates: false,
 			browsers: [

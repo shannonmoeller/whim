@@ -12,11 +12,11 @@ const usage = `
 
     all (default)
     clean
+    copy
     css
     html
     js
     server
-    statics
     svg
 
   Options
@@ -33,10 +33,10 @@ export default function make(options = {}) {
 		.task('default', lazyLoad('./all'))
 		.task('all', lazyLoad('./all'))
 		.task('clean', lazyLoad('./clean'))
+		.task('copy', lazyLoad('./copy'))
 		.task('css', lazyLoad('./css'))
 		.task('html', lazyLoad('./html'))
 		.task('js', lazyLoad('./js'))
 		.task('server', lazyLoad('./server'))
-		.task('statics', lazyLoad('./statics'))
 		.task('svg', lazyLoad('./svg'));
 }

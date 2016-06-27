@@ -11,6 +11,6 @@
 import { read, write } from 'spiff';
 
 export default async function statics() {
-	return read('src/{.*,*.txt,assets/media/**/*.*}')
+	return read('src/{.*,*.txt,assets/media/**/*.*}', null)
 		.map(write('dist'));
 }
