@@ -16,23 +16,29 @@ import handlebarsLayouts from 'handlebars-layouts';
 import handlebarsWax from 'handlebars-wax';
 import frontMatter from 'front-matter';
 
-import Remarkable from 'Remarkable';
-import highlight from 'highlight.js';
-import toc from 'toc';
+import md from 'markdown-it';
+import classy from 'markdown-it-classy';
+import high from 'highlight.js';
+import table from 'toc';
 
-function markdown(options) {
-	const { fn, hash } = options;
-	const md = new Remarkable({
+function markdown({ fn, hash }) {
+	const options = {
 		html: true,
-
-		highlight(code) {
-			return highlight.highlightAuto(code).value;
-		},
+		xhtmlOut: true,
+		highlight: code => high
+			.highlightAuto(code)
+			.value,
 
 		...hash,
-	});
+	};
 
-	return toc.process(md.render(fn(this)), hash);
+	return md(options)
+		.use(classy)
+		.render(fn(this));
+}
+
+function toc({ fn, hash }) {
+	return table.process(fn(this), hash);
 }
 
 export default async function html() {
@@ -43,7 +49,7 @@ export default async function html() {
 
 	const wax = handlebarsWax(hb, waxOptions)
 		.helpers(handlebarsLayouts)
-		.helpers({ markdown })
+		.helpers({ markdown, toc })
 		.partials('src/assets/partials/**/*.hbs')
 		.partials('src/assets/{css,js}/**/*.hbs')
 		.data('src/assets/data/**/*.js{,on}')
