@@ -11,7 +11,7 @@
     "email": "me@shannonmoeller.com",
     "url": "http://shannonmoeller.com"
   },
-  "bin": "bin",
+  "bin": "bin/whim",
   "main": "dist/index.js",
   "files": [
     "*.js",
