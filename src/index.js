@@ -1,42 +1,62 @@
-/**
- * # Whim
- */
+import { dirname } from 'path';
+import { spawn } from 'child-process-promise';
+import minimist from 'minimist';
 
-import ygor from 'ygor';
-import { lazyLoad, showUsage, showVersion } from './util';
+export function argv(options = {}) {
+	return minimist(process.argv.slice(2), options);
+}
 
-const usage = `
-  whim [options]
+export function error(err) {
+	if (!err) {
+		process.exit(1);
+	}
 
-  Options
+	const code = err.code || 1;
+	const message = err.stack
+		|| err.stderr
+		|| err.message
+		|| err;
 
-    -h, --help      Display this help.
-    -v, --version   Display version number.
+	console.error(message);
+	process.exit(code);
+}
 
-  ────────────
+export function install(mod) {
+	if (!mod || typeof mod !== 'string') {
+		throw new Error('Expected a module name.');
+	}
 
-  whim <task> [subtask] [options]
+	return spawn('npm', ['install', '--save-dev', mod], {
+		cwd: dirname(__dirname),
+		capture: ['stderr'],
+	});
+}
 
-  Tasks
+export async function req(mod) {
+	if (!mod || typeof mod !== 'string') {
+		throw new Error('Expected a module name.');
+	}
 
-    init            Code generator.
-    lint            Code linter.
-    make            Code builder.
-    test            Code tester.
+	try {
+		return require(mod);
+	}
+	catch (e) {
+		// well that didn't work
+	}
 
-  Options
+	console.log(`Could not find ${mod}. Attempting to install.`);
 
-    -h, --help      Display task help.
-    -v, --verbose   Display runtime info.
-`;
+	await install(mod);
 
-export default function whim(options = {}) {
-	showUsage(options, usage);
-	showVersion(options);
+	return require(mod);
+}
 
-	return ygor()
-		.task('init', lazyLoad('./init'))
-		.task('lint', lazyLoad('./lint'))
-		.task('make', lazyLoad('./make'))
-		.task('test', lazyLoad('./test'));
+export async function run(command, options = {}) {
+	if (!command || typeof command !== 'string') {
+		throw new Error('Expected a command name.');
+	}
+
+	const mod = await req(`whim-${command}`);
+
+	return mod.run(options);
 }

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-var ygor = require('ygor');
+var whim = require('../dist');
+var options = whim.argv();
+var command = options._.shift();
 
-require('../lib/register')();
-require('../src')(ygor.cli);
+whim
+	.run(command, options)
+	.catch(whim.error);

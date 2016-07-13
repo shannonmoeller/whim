@@ -1,99 +1,30 @@
-[![whim](https://cdn.rawgit.com/shannonmoeller/whim/27a17fd/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
+# `whim`
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][tip-img]][tip-url]
+[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Tip][amazon-img]][amazon-url]
 
-A protean toolkit based on my mercurial preferences. Read the code for details.
+TODO: Description.
 
 ## Install
 
-    $ npm install --global whim
-    $ npm install --save-dev whim
+    $ npm install --save whim
 
 ## Usage
 
-```
-  whim <task> [subtask] [options]
-
-  Tasks
-
-    init               Code generator.
-    ├─ module
-    └─ website
-
-    lint               Code linter.
-    ├─ all (default)
-    ├─ css
-    └─ js
-
-    make               Code builder.
-    ├─ all (default)
-    ├─ clean
-    ├─ css
-    ├─ html
-    ├─ js
-    ├─ server
-    ├─ statics
-    └─ svg
-
-    test               Code tester.
-    ├─ all (default)
-    ├─ browser
-    ├─ node
-    └─ report
-
-  Options
-
-    -h, --help         Display task help.
-    -v, --verbose      Display runtime info.
-```
-
-### Recommended Usage
-
-The recommended way to use `whim` is to set a specific version number and invoke `whim` via `npm run`. By using an exact version number for a locally installed copy of `whim` you ensure that its constantly-changing nature doesn't bite you. Using a global install will very likely not work long term.
-
 ```js
-// package.json
-{
-  ...
-
-  "devDependencies": {
-    "whim": "4.0.0"
-  },
-  "scripts": {
-    "start": "whim make",
-    "pretest": "whim lint",
-    "test": "whim test",
-    "report": "whim test report"
-  },
-
-  ...
-}
+var whim = require('whim');
 ```
-
-Then:
-
-    $ npm start server -- -mv
-    # runs `whim make server -mv`
-
-    $ npm test
-    # runs `whim lint && whim test`
-
-    $ npm run report
-    # runs `whim test report`
 
 ## API
 
-### test
+### whim()
 
-Testing API.
+TODO: Description.
 
-```js
-import test from 'whim/lib/test';
+### .method([arg]): Type
 
-test('should do something', async t => {
-    t.pass();
-});
-```
+- `arg` `Type` (default: `value`) Description.
+
+TODO: Description.
 
 ## Contribute
 
@@ -109,8 +40,12 @@ Standards for this project, including tests, code coverage, and semantics are en
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
-[tip-img]:    https://img.shields.io/badge/tip-jar-yellow.svg?style=flat-square
-[tip-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
+[amazon-img]:    https://img.shields.io/badge/tip-jar-yellow.svg?style=flat-square
+[amazon-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
+[coveralls-img]: http://img.shields.io/coveralls/shannonmoeller/whim/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/shannonmoeller/whim
 [downloads-img]: http://img.shields.io/npm/dm/whim.svg?style=flat-square
 [npm-img]:       http://img.shields.io/npm/v/whim.svg?style=flat-square
 [npm-url]:       https://npmjs.org/package/whim
+[travis-img]:    http://img.shields.io/travis/shannonmoeller/whim.svg?style=flat-square
+[travis-url]:    https://travis-ci.org/shannonmoeller/whim
