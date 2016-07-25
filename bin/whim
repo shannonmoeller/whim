@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
-var whim = require('../dist');
-var options = whim.argv();
-var command = options._.shift();
+var subcommand = process.argv[2];
+var args = process.argv.slice(3);
 
-whim
-	.run(command, options)
-	.catch(whim.error);
+require('..')(subcommand, args);
