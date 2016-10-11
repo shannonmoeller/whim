@@ -54,7 +54,7 @@
     "postcss-cssnext": "^2.8.0",
     "postcss-import": "^8.1.2",
     "postcss-url": "^5.1.2",
-    "spiff": "^2.0.13",
+    "spiff": "^3.0.1",
     "stylelint": "^7.4.2",
     "svgstore": "^1.1.0",
     "tap-diff": "^0.1.1",
