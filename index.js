@@ -3,7 +3,7 @@
 var assign = require('object-assign');
 var debug = require('debug')('whim');
 var npmPath = require('npm-path');
-var spawnSync = require('child_process').spawnSync;
+var cp = require('child_process');
 var which = require('which');
 
 var pkg = require('./package.json');
@@ -29,7 +29,7 @@ function find(command) {
 function install(command) {
 	debug(`Installing ${command}.`);
 
-	var res = spawnSync('npm', ['i', '-D', command], {
+	var res = cp.spawnSync('npm', ['i', '-D', command], {
 		stdio: [null, process.stdout, process.stderr],
 		env: env,
 	});
@@ -46,7 +46,7 @@ function install(command) {
 function run(command, args) {
 	debug(`Running ${command}.`);
 
-	var res = spawnSync(command, args, {
+	var res = cp.spawnSync(command, args, {
 		stdio: [process.stdin, process.stdout, process.stderr],
 		env: env,
 	});

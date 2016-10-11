@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var subcommand = process.argv[2];
-var args = process.argv.slice(3);
+var subcommand = process.argv.splice(2, 1);
+var args = process.argv.slice(2);
 
 require('..')(subcommand, args);

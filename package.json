@@ -24,6 +24,7 @@
     "which": "^1.2.10"
   },
   "devDependencies": {},
+  "scripts": {},
   "engines": {
     "node": ">= 4.2.0"
   }
