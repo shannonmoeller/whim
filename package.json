@@ -1,31 +1,7 @@
 {
-  "name": "whim",
-  "version": "5.0.0",
-  "description": "A protean toolkit based on my mercurial preferences.",
-  "keywords": [],
-  "license": "MIT",
-  "repository": "shannonmoeller/whim",
-  "homepage": "https://github.com/shannonmoeller/whim#readme",
-  "author": {
-    "name": "Shannon Moeller",
-    "email": "me@shannonmoeller.com",
-    "url": "http://shannonmoeller.com"
-  },
-  "bin": "bin/whim",
-  "main": "index.js",
-  "files": [
-    "*.js",
-    "bin"
-  ],
-  "dependencies": {
-    "debug": "^2.2.0",
-    "npm-path": "^2.0.2",
-    "object-assign": "^4.1.0",
-    "which": "^1.2.10"
-  },
-  "devDependencies": {},
-  "scripts": {},
-  "engines": {
-    "node": ">= 4.2.0"
+  "private": true,
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "2.0.0-beta.30"
   }
 }
