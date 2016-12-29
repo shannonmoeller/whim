@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "A protean JavaScript lint configuration based on my mercurial preferences.",
   "license": "ISC",
-  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/eslint-config-whim",
-  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/eslint-config-whim#readme",
+  "repository": "https://github.com/shannonmoeller/whim",
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "scripts": {
     "test": "eslint --config index.js 'test/*.*'"
