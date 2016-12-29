@@ -1,7 +1,10 @@
 {
+  "name": "whim-monorepo",
   "private": true,
-  "license": "ISC",
+  "scripts": {
+    "lerna": "lerna"
+  },
   "devDependencies": {
-    "lerna": "2.0.0-beta.30"
+    "lerna": "2.0.0-beta.31"
   }
 }

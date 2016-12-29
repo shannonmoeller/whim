@@ -1,0 +1,25 @@
+{
+  "name": "stylelint-config-whim",
+  "version": "1.0.0",
+  "description": "A protean CSS lint configuration based on my mercurial preferences.",
+  "license": "ISC",
+  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/stylelint-config-whim",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/stylelint-config-whim#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "scripts": {
+    "test": "stylelint --config index.js 'test/*.*'"
+  },
+  "main": "index.js",
+  "files": [
+    "*.js"
+  ],
+  "dependencies": {
+    "stylelint-processor-html": "^1.0.0"
+  },
+  "devDependencies": {
+    "stylelint": "^7.7.0"
+  },
+  "peerDependencies": {
+    "stylelint": ">= 7.7.0"
+  }
+}
