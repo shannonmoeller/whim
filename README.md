@@ -1,8 +1,6 @@
 [![whim](https://cdn.rawgit.com/shannonmoeller/whim/d6a4373/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
 
-A protean toolkit based on my mercurial preferences. Read the code for details.
-
-[![Tip][tip-img]][tip-url]
+A protean toolkit based on my mercurial preferences. Read the code for details. [![Tip][tip-img]][tip-url]
 
 ----
 
