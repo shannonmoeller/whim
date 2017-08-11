@@ -7,7 +7,7 @@ import { normalizeGlobs } from '../util';
 import { exclusionGlobs } from '../../config/whim';
 
 import cssLint from 'stylelint';
-import cssFormatter from 'stylelint/dist/formatters/stringFormatter';
+import cssFormatter from 'stylelint/lib/formatters/stringFormatter';
 import cssConfig from '../../config/stylelint';
 
 const cssGlobs = [
