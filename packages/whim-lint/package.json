@@ -1,0 +1,23 @@
+{
+  "name": "whim-lint",
+  "version": "5.0.0",
+  "description": "A protean linter based on my mercurial preferences.",
+  "keywords": [],
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-lint",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-lint#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "bin": "bin/whim-lint",
+  "main": "index.js",
+  "files": [
+    "*.js",
+    "bin"
+  ],
+  "dependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-whim": "^1.0.0",
+    "stylelint": "^7.10.1",
+    "stylelint-config-whim": "^1.0.0",
+    "whim": "^5.0.0"
+  }
+}

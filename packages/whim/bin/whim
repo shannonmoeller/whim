@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+'use strict';
+
+const pkgDir = require('pkg-dir');
+const { basename } = require('path');
+const { install } = require('enpeem');
+const { setEnv, spawnCommand } = require('../index');
+
+function showUsage(script, command) {
+	const pkg = require('../package.json');
+	const usage = `
+		Usage: ${command} <command>
+
+		where <command> is one of:
+			init, lint, test
+
+		${command}@${pkg.version} ${script}
+	`;
+
+	console.error(usage
+		.trimRight()
+		.replace(/^\t{2}/gm, '')
+		.replace(/\t/g, '    ')
+	);
+
+	process.exitCode = 127;
+}
+
+function resolveCommand(command) {
+	return require.resolve(command);
+}
+
+function installCommand(command) {
+	const options = {
+		dependencies: [command],
+		loglevel: 'silent',
+	};
+
+	return new Promise((resolve) => {
+		install(options, (err) => err == null
+			? resolve(resolveCommand(command))
+			: reject(err)
+		);
+	});
+}
+
+function main() {
+	// Compute subcommand
+	const [node, script, child, ...args] = process.argv;
+	const command = basename(script);
+	const subcommand = `${command}-${child}`;
+
+	if (!child) {
+		return showUsage(script, command);
+	}
+
+	// Update cwd to nearest root
+	const cwd = pkgDir.sync(process.cwd());
+
+	process.cwd(cwd);
+	setEnv(cwd);
+
+	// Get busy
+	return Promise
+		.resolve()
+		.then(() => resolveCommand(subcommand))
+		.catch(() => installCommand(subcommand))
+		.then(() => spawnCommand(subcommand, args))
+		.then(({ status }) => process.exit(status));
+}
+
+main();

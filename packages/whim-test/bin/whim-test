@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+'use strict';
+
+const { setEnv, execCommand } = require('whim');
+
+setEnv(__dirname);
+
+switch (process.argv[2]) {
+	case 'cover':
+		execCommand(`nyc whim-test`);
+		break;
+
+	case 'report':
+		execCommand(`nyc report --reporter text-lcov | coveralls`);
+		break;
+
+	default:
+		execCommand(`blue-tape {test.js,test/**/*.js} | tap-diff`);
+		break;
+}

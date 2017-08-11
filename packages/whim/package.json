@@ -1,0 +1,21 @@
+{
+  "name": "whim",
+  "version": "5.0.0",
+  "description": "A protean toolkit based on my mercurial preferences.",
+  "keywords": [],
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/whim",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/whim#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "bin": "bin/whim",
+  "main": "index.js",
+  "files": [
+    "bin"
+  ],
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "enpeem": "^2.2.0",
+    "npm-path": "^2.0.3",
+    "pkg-dir": "^1.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+'use strict';
+
+const { setEnv, execCommand } = require('whim');
+const eslintConfig = require.resolve('eslint-config-whim');
+
+setEnv(__dirname);
+execCommand(`eslint --config '${eslintConfig}' .`);

@@ -1,0 +1,22 @@
+{
+  "name": "whim-test",
+  "version": "5.0.0",
+  "description": "A protean tester based on my mercurial preferences.",
+  "keywords": [],
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-test",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-test#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "bin": "bin/whim-test",
+  "main": "index.js",
+  "files": [
+    "*.js",
+    "bin"
+  ],
+  "dependencies": {
+    "blue-tape": "^1.0.0",
+    "coveralls": "^2.13.1",
+    "nyc": "^10.3.0",
+    "tap-diff": "^0.1.1"
+  }
+}

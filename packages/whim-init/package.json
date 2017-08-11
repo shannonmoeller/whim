@@ -1,0 +1,18 @@
+{
+  "name": "whim-init",
+  "version": "5.0.0",
+  "description": "A protean generator based on my mercurial preferences.",
+  "keywords": [],
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-init",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/whim-init#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "bin": "bin/whim-init",
+  "main": "index.js",
+  "files": [
+    "*.js",
+    "bin"
+  ],
+  "dependencies": {
+  }
+}
