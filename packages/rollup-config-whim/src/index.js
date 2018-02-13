@@ -3,6 +3,12 @@ import isomorphic from 'rollup-preset-isomorphic';
 import istanbul from 'rollup-plugin-istanbul';
 import readPkgUp from 'read-pkg-up';
 
+function onwarn(warning) {
+	if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+		console.error(`(!) ${warning.message}`);
+	}
+}
+
 function configureTest() {
 	const { pkg } = readPkgUp.sync();
 	const nyc = (pkg && pkg.nyc) || {};
@@ -34,6 +40,7 @@ function configureTest() {
 				exclude,
 			}),
 		],
+		onwarn,
 	};
 }
 
@@ -56,6 +63,7 @@ function configureBuild() {
 		],
 		external: Object.keys(pkg.dependencies),
 		plugins: isomorphic(),
+		onwarn,
 	};
 }
 
