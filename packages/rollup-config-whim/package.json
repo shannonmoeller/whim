@@ -1,6 +1,6 @@
 {
   "name": "rollup-config-whim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A protean rollup configuration based on my mercurial preferences.",
   "license": "MIT",
   "repository": "https://github.com/shannonmoeller/whim",
