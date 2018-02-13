@@ -25,8 +25,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
-    "babel-plugin-istanbul": "^4.1.5",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-whim": "^1.0.0-5",
     "babel-register": "^6.26.0",
     "blue-tape": "^1.0.0",
     "coveralls": "^3.0.0",
@@ -34,7 +33,7 @@
     "del-cli": "^1.1.0",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-config-whim": "^3.0.0",
+    "eslint-config-whim": "^3.1.0-5",
     "husky": "^0.14.3",
     "lerna": "^2.7.2",
     "npm-check-updates": "^2.14.0",
@@ -45,44 +44,21 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": false,
-            "node": 6
-          }
-        }
-      ]
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          "istanbul"
-        ]
-      }
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint-config-whim",
-      "eslint-config-prettier"
-    ],
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaVersion": 8
-    },
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    }
+      "babel-preset-whim"
+    ]
   },
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": true
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "eslint-config-whim",
+      "eslint-config-prettier"
+    ]
   },
   "nyc": {
     "sourceMap": false,
