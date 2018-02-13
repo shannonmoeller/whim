@@ -1,0 +1,18 @@
+{
+  "name": "stylelint-config-whim",
+  "version": "4.1.0-0",
+  "description": "A protean stylelint configuration based on my mercurial preferences.",
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/stylelint-config-whim#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "*.md"
+  ],
+  "dependencies": {
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-processor-html": "^1.0.0"
+  }
+}

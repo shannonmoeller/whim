@@ -1,114 +1,20 @@
-[![whim](https://cdn.rawgit.com/shannonmoeller/whim/27a17fd/media/logo.svg)](https://github.com/shannonmoeller/whim#readme)
+<p align="center">
+  <a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/27a17fd/media/logo.svg" alt="whim" width="480" /></a>
+</p>
 
-[![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Tip][tip-img]][tip-url]
+<p align="center">
+  A protean Node.js toolset based on my mercurial preferences.
+</p>
 
-A protean toolkit based on my mercurial preferences. Read the code for details.
+<br />
 
-## Install
+Setup, configuration, and maintenance of tools can take forever. I've got [more interesting things](https://github.com/shannonmoeller) to build! To maintain my sanity I keep some common stuff here in an easily reusable and consumable form. ymmv.
 
-    $ npm install --global whim
-    $ npm install --save-dev whim
-
-## Usage
-
-```
-  whim <task> [subtask] [options]
-
-  Tasks
-
-    init               Code generator.
-    ├─ module
-    └─ website
-
-    lint               Code linter.
-    ├─ all (default)
-    ├─ css
-    └─ js
-
-    make               Code builder.
-    ├─ all (default)
-    ├─ clean
-    ├─ css
-    ├─ html
-    ├─ js
-    ├─ server
-    ├─ statics
-    └─ svg
-
-    test               Code tester.
-    ├─ all (default)
-    ├─ browser
-    ├─ node
-    └─ report
-
-  Options
-
-    -h, --help         Display task help.
-    -v, --verbose      Display runtime info.
-```
-
-### Recommended Usage
-
-The recommended way to use `whim` is to set a specific version number and invoke `whim` via `npm run`. By using an exact version number for a locally installed copy of `whim` you ensure that its constantly-changing nature doesn't bite you. Using a global install will very likely not work long term.
-
-```js
-// package.json
-{
-  ...
-
-  "devDependencies": {
-    "whim": "4.0.0"
-  },
-  "scripts": {
-    "start": "whim make",
-    "pretest": "whim lint",
-    "test": "whim test",
-    "report": "whim test report"
-  },
-
-  ...
-}
-```
-
-Then:
-
-    $ npm start server -- -mv
-    # runs `whim make server -mv`
-
-    $ npm test
-    # runs `whim lint && whim test`
-
-    $ npm run report
-    # runs `whim test report`
-
-## API
-
-### test
-
-Testing API.
-
-```js
-import test from 'whim/lib/test';
-
-test('should do something', async t => {
-    t.pass();
-});
-```
-
-## Contribute
-
-Standards for this project, including tests, code coverage, and semantics are enforced with a build tool. Pull requests must include passing tests with 100% code coverage and no linting errors.
-
-### Test
-
-    $ npm test
+- [`babel-preset-whim`](http://npm.im/babel-preset-whim)
+- [`eslint-config-whim`](http://npm.im/eslint-config-whim)
+- [`rollup-config-whim`](http://npm.im/rollup-config-whim)
+- [`stylelint-config-whim`](http://npm.im/stylelint-config-whim)
 
 ----
 
 MIT © [Shannon Moeller](http://shannonmoeller.com)
-
-[tip-img]:    https://img.shields.io/badge/tip-jar-yellow.svg?style=flat-square
-[tip-url]:    https://www.amazon.com/gp/registry/wishlist/1VQM9ID04YPC5?sort=universal-price
-[downloads-img]: http://img.shields.io/npm/dm/whim.svg?style=flat-square
-[npm-img]:       http://img.shields.io/npm/v/whim.svg?style=flat-square
-[npm-url]:       https://npmjs.org/package/whim

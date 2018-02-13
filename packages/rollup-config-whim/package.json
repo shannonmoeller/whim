@@ -1,0 +1,19 @@
+{
+  "name": "rollup-config-whim",
+  "version": "1.0.0-1",
+  "description": "A protean rollup configuration based on my mercurial preferences.",
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/rollup-config-whim#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "*.md"
+  ],
+  "dependencies": {
+    "read-pkg-up": "^3.0.0",
+    "rollup-plugin-istanbul": "^2.0.1",
+    "rollup-preset-isomorphic": "^1.1.0-1"
+  }
+}

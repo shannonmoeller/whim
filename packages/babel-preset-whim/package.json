@@ -1,0 +1,19 @@
+{
+  "name": "babel-preset-whim",
+  "version": "1.0.0-0",
+  "description": "A protean Babel preset based on my mercurial preferences.",
+  "license": "MIT",
+  "repository": "https://github.com/shannonmoeller/whim",
+  "homepage": "https://github.com/shannonmoeller/whim/tree/master/packages/babel-preset-whim#readme",
+  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "*.md"
+  ],
+  "dependencies": {
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
