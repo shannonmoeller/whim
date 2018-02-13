@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-whim",
-  "version": "1.0.0-6",
+  "version": "1.0.0-7",
   "description": "A protean Babel preset based on my mercurial preferences.",
   "license": "MIT",
   "repository": "https://github.com/shannonmoeller/whim",
