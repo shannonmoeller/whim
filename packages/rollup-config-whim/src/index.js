@@ -5,7 +5,7 @@ import readPkgUp from 'read-pkg-up';
 
 function configureTest() {
 	const { pkg } = readPkgUp.sync();
-	const { nyc } = pkg || {};
+	const nyc = (pkg && pkg.nyc) || {};
 
 	const include = nyc.include || ['**'];
 	const exclude = nyc.exclude || [

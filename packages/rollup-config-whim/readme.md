@@ -12,23 +12,19 @@ $ npm install --save-dev rollup rollup-config-whim
 
 ## Usage
 
-Use as your rollup configuration:
-
-```command
-rollup -c rollup-config-whim
-NODE_ENV=test rollup -c rollup-config-whim
-```
-
-Or import and customize it:
-
 ```js
 // rollup.config.js
 import whim from 'rollup-config-whim';
 
 export default {
-  ...whim,
+  ...whim(),
   // overrides
 };
+```
+
+```command
+$ rollup -c
+$ NODE_ENV=test rollup "test/**/*.js" -c
 ```
 
 ----
