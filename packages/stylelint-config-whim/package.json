@@ -13,6 +13,6 @@
   ],
   "dependencies": {
     "stylelint-config-standard": "^18.0.0",
-    "stylelint-processor-html": "^1.0.0"
+    "stylelint-processor-arbitrary-tags": "^0.1.0"
   }
 }

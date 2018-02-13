@@ -29,7 +29,7 @@ module.exports = {
 		'array-bracket-spacing': 'error',
 		'array-callback-return': 'error',
 		'arrow-body-style': 'error',
-		'arrow-parens': ['error', 'always'],
+		'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
 		'block-scoped-var': 'error',
 		'block-spacing': 'error',
 		'callback-return': 'error',

@@ -1,6 +1,6 @@
 module.exports = {
 	extends: 'stylelint-config-standard',
-	processors: ['stylelint-processor-html'],
+	processors: ['stylelint-processor-arbitrary-tags'],
 	rules: {
 		'at-rule-no-vendor-prefix': true,
 		'color-named': 'never',
@@ -13,6 +13,7 @@ module.exports = {
 		'media-feature-name-no-vendor-prefix': true,
 		'no-descending-specificity': true,
 		'no-duplicate-selectors': true,
+		'no-empty-source': null,
 		'property-no-vendor-prefix': true,
 		'selector-attribute-quotes': 'always',
 		'selector-max-id': 0,

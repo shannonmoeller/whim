@@ -9,7 +9,6 @@
     "lint": "run-s lint-*",
     "lint-prettier": "prettier --ignore-path .gitignore --write \"**/*.{css,js}\"",
     "lint-eslint": "eslint --ignore-path .gitignore --fix \"**/*.js\"",
-    "lint-stylelint": "stylelint --ignore-path .gitignore --fix \"**/*.css\"",
     "test": "nyc run-s test-*",
     "test-node": "cross-env NODE_ENV=test blue-tape -r babel-register \"packages/*/test/*.js\" | tap-diff",
     "report": "nyc report -r text-lcov | coveralls",
@@ -37,16 +36,11 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-whim": "^3.0.0",
     "husky": "^0.14.3",
-    "lerna": "^2.8.0",
-    "mock-fs": "^4.4.2",
-    "mute": "^2.0.6",
+    "lerna": "^2.7.2",
     "npm-check-updates": "^2.14.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^11.4.1",
     "prettier": "^1.10.2",
-    "stylelint": "^8.4.0",
-    "stylelint-config-prettier": "^2.0.0",
-    "stylelint-config-whim": "^4.0.1",
     "tap-diff": "^0.1.1"
   },
   "babel": {
@@ -89,12 +83,6 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "useTabs": true
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-whim",
-      "stylelint-config-prettier"
-    ]
   },
   "nyc": {
     "sourceMap": false,

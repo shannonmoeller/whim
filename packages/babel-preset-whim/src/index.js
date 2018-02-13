@@ -1,26 +1,28 @@
 import presetEnv from 'babel-preset-env';
 import pluginIstanbul from 'babel-plugin-istanbul';
-import pluginObjectRestSpread from 'babel-plugin-transform-object-rest-spread';
+import pluginTransformObjectRestSpread from 'babel-plugin-transform-object-rest-spread';
 
 export default function babelPresetWhim(context, opts = {}) {
-	const browsers = opts.browsers || 'last 2 versions';
-	const esmodules = opts.esmodules || false;
-	const node = opts.node || 6;
+	const targets = {
+		browsers: 'last 2 versions',
+		node: 6,
+	};
+
+	if (opts.browsers !== undefined) {
+		targets.browsers = opts.browsers;
+	}
+
+	if (opts.esmodules !== undefined) {
+		targets.esmodules = opts.esmodules;
+	}
+
+	if (opts.node !== undefined) {
+		targets.node = opts.node;
+	}
 
 	return {
-		presets: [
-			[
-				presetEnv,
-				{
-					targets: {
-						browsers,
-						esmodules,
-						node,
-					},
-				},
-			],
-		],
-		plugins: [pluginObjectRestSpread],
+		presets: [[presetEnv, { targets }]],
+		plugins: [pluginTransformObjectRestSpread],
 		env: {
 			test: {
 				plugins: [pluginIstanbul],
