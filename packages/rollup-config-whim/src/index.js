@@ -62,7 +62,11 @@ function configureBuild() {
 			},
 		],
 		external: Object.keys(pkg.dependencies),
-		plugins: isomorphic(),
+		plugins: [
+			...isomorphic({
+				multiEntry: false,
+			}),
+		],
 		onwarn,
 	};
 }
