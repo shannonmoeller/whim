@@ -1,6 +1,6 @@
 module.exports = {
 	extends: 'stylelint-config-standard',
-	processors: ['stylelint-processor-arbitrary-tags'],
+	processors: ['@mapbox/stylelint-processor-arbitrary-tags'],
 	rules: {
 		'at-rule-no-vendor-prefix': true,
 		'color-named': 'never',
