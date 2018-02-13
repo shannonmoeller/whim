@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-whim",
-  "version": "4.1.0-1",
+  "version": "4.1.0-2",
   "description": "A protean stylelint configuration based on my mercurial preferences.",
   "license": "MIT",
   "repository": "https://github.com/shannonmoeller/whim",
