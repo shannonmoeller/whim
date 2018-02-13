@@ -33,6 +33,12 @@ export default {
 
 ----
 
+<p align="center">
+  <a href="https://github.com/shannonmoeller/whim#readme"><img src="https://cdn.rawgit.com/shannonmoeller/whim/27a17fd/media/logo.svg" alt="whim" width="480" /></a>
+</p>
+
+----
+
 MIT © [Shannon Moeller](http://shannonmoeller.com)
 
 [downloads-img]: http://img.shields.io/npm/dm/rollup-config-whim.svg?style=flat-square

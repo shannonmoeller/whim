@@ -3,10 +3,13 @@ import isomorphic from 'rollup-preset-isomorphic';
 import istanbul from 'rollup-plugin-istanbul';
 import readPkgUp from 'read-pkg-up';
 
-const { pkg } = readPkgUp.sync();
 let config = {};
+const { pkg } = readPkgUp.sync();
 
 if (process.env.NODE_ENV === 'test') {
+	const { nyc } = pkg || {};
+	const { ignore } = nyc || {};
+
 	// Bundle for tests
 	config = {
 		input: 'test/index.js',
@@ -21,7 +24,7 @@ if (process.env.NODE_ENV === 'test') {
 		plugins: [
 			...isomorphic(),
 			istanbul({
-				exclude: pkg.nyc.ignore,
+				exclude: ignore || '**/node_modules/**',
 			}),
 		],
 	};
