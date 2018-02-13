@@ -1,10 +1,13 @@
 import presetEnv from 'babel-preset-env';
 import pluginIstanbul from 'babel-plugin-istanbul';
 import pluginTransformObjectRestSpread from 'babel-plugin-transform-object-rest-spread';
+import readPkgUp from 'read-pkg-up';
+
+const { pkg } = readPkgUp.sync();
 
 export default function babelPresetWhim(context, opts = {}) {
 	const targets = {
-		browsers: 'last 2 versions',
+		browsers: pkg.browserslist || false,
 		node: 6,
 	};
 
