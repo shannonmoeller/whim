@@ -1,4 +1,4 @@
-import presetEnv from 'babel-plugin-env';
+import presetEnv from 'babel-preset-env';
 import pluginIstanbul from 'babel-plugin-istanbul';
 import pluginObjectRestSpread from 'babel-plugin-transform-object-rest-spread';
 
