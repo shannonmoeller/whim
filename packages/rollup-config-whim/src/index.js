@@ -3,15 +3,21 @@ import isomorphic from 'rollup-preset-isomorphic';
 import istanbul from 'rollup-plugin-istanbul';
 import readPkgUp from 'read-pkg-up';
 
-let config = {};
-const { pkg } = readPkgUp.sync();
-
-if (process.env.NODE_ENV === 'test') {
+function configureTest() {
+	const { pkg } = readPkgUp.sync();
 	const { nyc } = pkg || {};
-	const { ignore } = nyc || {};
 
-	// Bundle for tests
-	config = {
+	const include = nyc.include || ['**'];
+	const exclude = nyc.exclude || [
+		'coverage/**',
+		'test/**',
+		'test{,-*}.js',
+		'**/*.test.js',
+		'**/__tests__/**',
+		'**/node_modules/**',
+	];
+
+	return {
 		input: 'test/index.js',
 		output: {
 			format: 'iife',
@@ -24,13 +30,17 @@ if (process.env.NODE_ENV === 'test') {
 		plugins: [
 			...isomorphic(),
 			istanbul({
-				exclude: ignore || '**/node_modules/**',
+				include,
+				exclude,
 			}),
 		],
 	};
-} else {
-	// Bundle for web
-	config = {
+}
+
+function configureBuild() {
+	const { pkg } = readPkgUp.sync();
+
+	return {
 		input: 'src/index.js',
 		output: [
 			{
@@ -49,4 +59,6 @@ if (process.env.NODE_ENV === 'test') {
 	};
 }
 
-export default config;
+export default function rollupConfigWhim() {
+	return process.env.NODE_ENV === 'test' ? configureTest() : configureBuild();
+}

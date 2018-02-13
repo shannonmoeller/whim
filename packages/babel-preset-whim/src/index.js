@@ -3,9 +3,8 @@ import pluginIstanbul from 'babel-plugin-istanbul';
 import pluginTransformObjectRestSpread from 'babel-plugin-transform-object-rest-spread';
 import readPkgUp from 'read-pkg-up';
 
-const { pkg } = readPkgUp.sync();
-
 export default function babelPresetWhim(context, opts = {}) {
+	const { pkg } = readPkgUp.sync();
 	const targets = {
 		browsers: pkg.browserslist || false,
 		node: 6,
