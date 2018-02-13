@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-whim",
-  "version": "4.1.0-3",
+  "version": "4.1.0-4",
   "description": "A protean stylelint configuration based on my mercurial preferences.",
   "license": "MIT",
   "repository": "https://github.com/shannonmoeller/whim",
@@ -12,7 +12,7 @@
     "*.md"
   ],
   "dependencies": {
-    "stylelint-config-standard": "^18.0.0",
-    "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0"
+    "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
+    "stylelint-config-standard": "^18.0.0"
   }
 }
