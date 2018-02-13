@@ -12,6 +12,7 @@
     "*.md"
   ],
   "dependencies": {
+    "lodash.camelcase": "^4.3.0",
     "read-pkg-up": "^3.0.0",
     "rollup-plugin-istanbul": "^2.0.1",
     "rollup-preset-isomorphic": "^1.1.0-1"

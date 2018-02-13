@@ -6,7 +6,7 @@
     "build-clean": "lerna exec -- del dist",
     "build-node": "lerna exec -- babel src -d dist",
     "lint": "run-s lint-*",
-    "lint-prettier": "prettier --ignore-path .gitignore --write \"**/*.{css,js}\"",
+    "lint-prettier": "prettier --ignore-path .gitignore --write \"**/*.js\"",
     "lint-eslint": "eslint --ignore-path .gitignore --fix \"**/*.js\"",
     "test": "nyc run-s test-*",
     "test-node": "cross-env NODE_ENV=test blue-tape -r babel-register \"packages/*/test/*.js\" | tap-diff",
