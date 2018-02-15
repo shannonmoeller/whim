@@ -1,6 +1,13 @@
 module.exports = {
 	extends: 'stylelint-config-standard',
-	processors: ['@mapbox/stylelint-processor-arbitrary-tags'],
+	processors: [
+		[
+			'@mapbox/stylelint-processor-arbitrary-tags',
+			{
+				fileFilterRegex: [/\.html$/],
+			},
+		],
+	],
 	rules: {
 		'at-rule-no-vendor-prefix': true,
 		'color-named': 'never',
