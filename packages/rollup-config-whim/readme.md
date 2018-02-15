@@ -12,18 +12,32 @@ $ npm install --save-dev rollup rollup-config-whim
 
 ## Usage
 
+Module:
+
 ```js
 // rollup.config.js
-import whim from 'rollup-config-whim';
+import { configureModule } from 'rollup-config-whim';
+
+export default configureModule();
+```
+
+Web:
+
+```js
+// rollup.config.js
+import { configureWeb } from 'rollup-config-whim';
 
 export default {
-  ...whim(),
-  // overrides
+  ...configureWeb()
+  // optional overrides
 };
 ```
 
+Run:
+
 ```command
 $ rollup -c
+$ rollup -i src/client/js/index.js -o dist/client/js/index.js -c
 $ NODE_ENV=test rollup "test/**/*.js" -c
 ```
 

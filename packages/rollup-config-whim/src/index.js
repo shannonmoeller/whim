@@ -3,16 +3,14 @@ import isomorphic from 'rollup-preset-isomorphic';
 import istanbul from 'rollup-plugin-istanbul';
 import readPkgUp from 'read-pkg-up';
 
-function onwarn(warning) {
+export function onwarn(warning) {
 	if (warning.code !== 'CIRCULAR_DEPENDENCY') {
 		console.error(`(!) ${warning.message}`);
 	}
 }
 
-function configureTest() {
-	const { pkg } = readPkgUp.sync();
-	const nyc = (pkg && pkg.nyc) || {};
-
+export function configureTest(pkg) {
+	const nyc = pkg.nyc || {};
 	const include = nyc.include || ['**'];
 	const exclude = nyc.exclude || [
 		'coverage/**',
@@ -44,10 +42,39 @@ function configureTest() {
 	};
 }
 
-function configureBuild() {
+export function configureWeb() {
 	const { pkg } = readPkgUp.sync();
 
+	if (process.env.NODE_ENV === 'test') {
+		return configureTest(pkg);
+	}
+
 	return {
+		input: 'src/client/js/index.js',
+		output: {
+			format: 'iife',
+			name: camelCase(pkg.name),
+			globals: Object.keys(pkg.dependencies).reduce(
+				(a, b) => Object.assign(a, { [b]: camelCase(b) }),
+				{}
+			),
+		},
+		plugins: isomorphic({
+			multiEntry: false,
+		}),
+		onwarn,
+	};
+}
+
+export function configureModule() {
+	const { pkg } = readPkgUp.sync();
+
+	if (process.env.NODE_ENV === 'test') {
+		return configureTest(pkg);
+	}
+
+	return {
+		external: Object.keys(pkg.dependencies),
 		input: 'src/index.js',
 		output: [
 			{
@@ -61,16 +88,9 @@ function configureBuild() {
 				sourcemap: true,
 			},
 		],
-		external: Object.keys(pkg.dependencies),
-		plugins: [
-			...isomorphic({
-				multiEntry: false,
-			}),
-		],
+		plugins: isomorphic({
+			multiEntry: false,
+		}),
 		onwarn,
 	};
-}
-
-export default function rollupConfigWhim() {
-	return process.env.NODE_ENV === 'test' ? configureTest() : configureBuild();
 }
