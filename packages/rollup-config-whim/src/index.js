@@ -9,7 +9,9 @@ export function onwarn(warning) {
 	}
 }
 
-export function configureTest(pkg) {
+export function configureTest() {
+	const { pkg } = readPkgUp.sync();
+
 	const nyc = pkg.nyc || {};
 	const include = nyc.include || ['**'];
 	const exclude = nyc.exclude || [
@@ -43,11 +45,11 @@ export function configureTest(pkg) {
 }
 
 export function configureWeb() {
-	const { pkg } = readPkgUp.sync();
-
 	if (process.env.NODE_ENV === 'test') {
-		return configureTest(pkg);
+		return configureTest();
 	}
+
+	const { pkg } = readPkgUp.sync();
 
 	return {
 		input: 'src/client/js/index.js',
@@ -67,11 +69,11 @@ export function configureWeb() {
 }
 
 export function configureModule() {
-	const { pkg } = readPkgUp.sync();
-
 	if (process.env.NODE_ENV === 'test') {
-		return configureTest(pkg);
+		return configureTest();
 	}
+
+	const { pkg } = readPkgUp.sync();
 
 	return {
 		external: Object.keys(pkg.dependencies),
